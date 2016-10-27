@@ -1,0 +1,6 @@
+[2016-10-27 17:30:09] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'MongoDB\Driver\Manager' not found' in /home/blackhole/Documents/project/siin/siin/vendor/mongodb/mongodb/src/Client.php:61
+Stack trace:
+#0 {main}  
+[2016-10-27 17:33:48] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'MongoDB\Driver\Manager' not found' in /home/blackhole/Documents/project/siin/siin/vendor/mongodb/mongodb/src/Client.php:61
+Stack trace:
+#0 {main}  
