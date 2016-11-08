@@ -14,3 +14,28 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/pui-lembaga', 'SaveToCollection@index');
+Route::get('/pui-lembaga/store', 'SaveToCollection@store');
+Route::get('/pui-produk/store', 'SaveToCollection@storeProduk');
+// Route::get('/pui-lembaga/storetes', 'SaveToCollection@storetes');
+Route::get('/pui-lembaga/show', 'SaveToCollection@show');
+Route::get('/pui-produk/show', 'SaveToCollection@showProduk');
+
+Route::get('/oai', 'OaiController@index');
+Route::get('/oai/tes', 'OaiController@tes');
+Route::get('/oai/list', 'OaiController@getAvailableMetadataFormats');
+Route::get('/oai/records', 'OaiController@getRecords');
+
+Route::get('/rml/input/{status?}', 'RMLController@create')->name('inputRML');
+Route::get('/rml/get-active/', 'RMLController@getActive');
+Route::post('/rml/submit', 'RMLController@store');
+
+
+Route::get('/updater/update/', 'WebServiceUpdater@updateLocal');
+Route::get('/updater/update/{type}', 'WebServiceUpdater@updateByType');
+
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

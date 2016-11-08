@@ -7,11 +7,14 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
+    'Phpoaipmh' => array($vendorDir . '/caseyamcl/phpoaipmh/src', $vendorDir . '/caseyamcl/phpoaipmh/tests'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
     'Jenssegers\\Mongodb' => array($vendorDir . '/jenssegers/mongodb/src'),
     'Jenssegers\\Eloquent' => array($vendorDir . '/jenssegers/mongodb/src'),
     'JakubOnderka\\PhpConsoleHighlighter' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
+    'Evenement' => array($vendorDir . '/evenement/evenement/src'),
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
+    'Danmichaelo\\QuiteSimpleXMLElement' => array($vendorDir . '/danmichaelo/quitesimplexmlelement/src'),
     'Cron' => array($vendorDir . '/mtdowling/cron-expression/src'),
 );

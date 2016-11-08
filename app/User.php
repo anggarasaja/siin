@@ -2,10 +2,13 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+// use Illuminate\Foundation\Auth\User as Authenticatable;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Illuminate\Auth\Authenticatable;
 
-class User extends Authenticatable
+class User extends Eloquent implements \Illuminate\Contracts\Auth\Authenticatable   
 {
+    use Authenticatable;
     /**
      * The attributes that are mass assignable.
      *

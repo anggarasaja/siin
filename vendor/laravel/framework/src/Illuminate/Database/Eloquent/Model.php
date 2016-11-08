@@ -570,7 +570,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     public static function create(array $attributes = [])
     {
         $model = new static($attributes);
-
+        var_dump($model);
         $model->save();
 
         return $model;

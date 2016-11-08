@@ -1,0 +1,38 @@
+{
+    "name": "scriptotek/oai-pmh-client",
+    "type": "library",
+    "description": "Package for harvesting data from OAI-PMH repositories",
+    "homepage": "https://github.com/scriptotek/php-oai-pmh-client",
+    "keywords": ["OAI-PMH"],
+    "require": {
+        "php": ">=5.5",
+        "danmichaelo/quitesimplexmlelement": "~0.4",
+        "guzzlehttp/guzzle": "~6.0",
+        "evenement/evenement": "~2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8|~5.5",
+        "mockery/mockery": "~0.9",
+        "sami/sami": "~3.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dan Michael O. Heggø",
+            "email": "danmichaelo@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/scriptotek/php-oai-pmh-client/issues"
+    },
+    "autoload": {
+        "psr-4": {
+            "Scriptotek\\OaiPmh\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Scriptotek\\OaiPmh\\": "tests/"
+        }
+    }
+}

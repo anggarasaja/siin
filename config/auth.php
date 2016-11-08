@@ -71,6 +71,12 @@ return [
         ],
 
         // 'users' => [
+        //     'driver' => 'mongodb',
+        //     'model' => Jenssegers\Mongodb\Auth\UserModel::class,
+        //     'table' => 'users',
+        // ],
+
+        // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],

@@ -158,6 +158,9 @@ return [
 
         //laravel mongo
         Jenssegers\Mongodb\MongodbServiceProvider::class,
+
+        //html
+        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -203,6 +206,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Moloquent' => Jenssegers\Mongodb\Eloquent\Model::class,
+
+        //laravel collective
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 
