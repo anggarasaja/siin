@@ -28,6 +28,7 @@
     24 => 'App\\Providers\\RouteServiceProvider',
     25 => 'Jenssegers\\Mongodb\\MongodbServiceProvider',
     26 => 'Collective\\Html\\HtmlServiceProvider',
+    27 => 'App\\Providers\\CustomAuthProvider',
   ),
   'eager' => 
   array (
@@ -45,6 +46,7 @@
     11 => 'App\\Providers\\EventServiceProvider',
     12 => 'App\\Providers\\RouteServiceProvider',
     13 => 'Jenssegers\\Mongodb\\MongodbServiceProvider',
+    14 => 'App\\Providers\\CustomAuthProvider',
   ),
   'deferred' => 
   array (

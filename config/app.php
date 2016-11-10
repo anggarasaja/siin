@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     /*
     |--------------------------------------------------------------------------
@@ -161,6 +161,8 @@ return [
 
         //html
         Collective\Html\HtmlServiceProvider::class,
+
+        App\Providers\CustomAuthProvider::class,
     ],
 
     /*
