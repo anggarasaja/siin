@@ -29,7 +29,7 @@
     25 => 'Jenssegers\\Mongodb\\MongodbServiceProvider',
     26 => 'Collective\\Html\\HtmlServiceProvider',
     27 => 'Yajra\\Datatables\\DatatablesServiceProvider',
-    27 => 'App\\Providers\\CustomAuthProvider',
+    28 => 'App\\Providers\\CustomAuthProvider',
   ),
   'eager' => 
   array (

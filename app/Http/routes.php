@@ -31,6 +31,7 @@ Route::get('/oai/list', 'OaiController@getAvailableMetadataFormats');
 Route::get('/oai/records', 'OaiController@getRecords');
 
 Route::get('/rml/get-active/', 'RMLController@getActive');
+Route::get('/rml/get-active-count/', 'RMLController@getActiveCount');
 Route::post('/rml/submit', 'RMLController@store');
 
 

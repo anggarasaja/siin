@@ -163,7 +163,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
         //datatables
-        Yajra\Datatables\DatatablesServiceProvider::class
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
         App\Providers\CustomAuthProvider::class,
     ],

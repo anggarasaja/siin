@@ -101,9 +101,32 @@ class RMLController extends Controller
     {
         //
     }
+    // Count
+    public function getAllCount(){
+        $result = RMLModel::count();
 
+        return $result;
+    }
+    public function getActiveCount(){
+        $result = RMLModel::where('aktif', '=', 'on')->count();
+
+        return $result;
+    }
+
+    public function getNotActiveCount(){
+        $result = RMLModel::where('aktif', '!=', 'on')->count();
+
+        return $result;
+    }
+
+    // Data
     public function getActive(){
         $result = RMLModel::where('aktif', '=', 'on')->get();
+
+        return $result;
+    }
+    public function getNotActive(){
+        $result = RMLModel::where('aktif', '!=', 'on')->get();
 
         return $result;
     }

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Controllers\RMLController;
+use App\User;
 use App\Http\Requests;
 
 class DashboardController extends Controller
@@ -86,7 +87,21 @@ class DashboardController extends Controller
     }
 
     public function frontpage(){
-         return view('dashboard.chart');
+        //rml
+        $rml = new RMLController;
+        $totalAll = $rml->getAllCount();
+        $totalActive = $rml->getActiveCount();
+        $totalNotActive = $rml->getNotActiveCount();
+
+        //user
+        $totalUser = User::count();
+
+        return view('dashboard.chart',[
+            "totalAll"=>$totalAll,
+            "totalActive"=>$totalActive,
+            "totalNotActive"=>$totalNotActive,
+            "totalUser"=>$totalUser
+            ]);
     }
 
     public function rml(){
