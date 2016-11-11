@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Datatables;
 use App\Http\Requests;
 use App\RMLModel;
 
@@ -119,5 +119,31 @@ class RMLController extends Controller
     public function getActiveByServiceName($serviceName){
         $result = RMLModel::where('aktif', '=', 'on')->where('nama_service','=',$serviceName)->get();
         return $result;
+    }
+
+    public function getAllDt(){
+        $records= RMLModel::get();
+        return Datatables::of($records)
+        ->addColumn('action', function ($row) {
+            $button = "<div class='btn-group-vertical'>
+                                <button type='button' class='btn btn-primary btn-xs'>Edit</button>
+                                <button type='button' class='btn btn-warning btn-xs'>Perbaharui</button>";
+            if($row->aktif==null){
+                $button = $button."<button type='button' class='btn btn-success btn-xs'>aktifkan</button>";
+            } elseif ($row->aktif=='on') {
+                 $button = $button."<button type='button' class='btn btn-danger btn-xs'>non-aktifkan</button>";
+            }
+            return $button;
+        })   
+        ->editColumn('aktif', function($row){
+            if($row->aktif=="on"){
+                return '<span class="label label-success">aktif</span>';
+            } else if($row->aktif==null){
+                return '<span class="label label-danger">non-aktif</span>';
+            } else {
+                return '<span class="label label-default">unknown</span>';
+            }
+        })
+        ->make(true);
     }
 }

@@ -12,7 +12,7 @@
 		<!-- <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css"> -->
 		<!-- <link rel="stylesheet" type="text/css" href="static/css/custom.css"> -->
 		{!! Html::style('css/bootstrap.min.css'); !!}
-		{!! Html::style('css/custom.css'); !!}
+		{!! Html::style('css/custom-public.css'); !!}
 
 		{!! Html::script('js/jquery.min.js'); !!}
 		{!! Html::script('js/bootstrap.min.js'); !!}
@@ -66,13 +66,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">RISTEKDIKTI</a>
+				<a class="navbar-brand" href="/">RISTEKDIKTI</a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="dataset.html">Dataset</a></li>
-					<li class="dropdown">
+					<li><a href="/">Home</a></li>
+					@if (Auth::user())
+					<li><a href="/dashboard">Dashboard</a></li>
+					<!-- <li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Organisasi <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">PDII LIPI</a></li>
@@ -81,17 +82,18 @@
 							<li role="separator" class="divider"></li>
 							<li><a href="#">RISTEKDIKTI</a></li>
 						</ul>
-					</li>
-					<li><a href="#">Data Portal</a></li>
+					</li> -->
+					<!-- <li><a href="#">Data Portal</a></li> -->
+					@endif
 					<li>
-						<form class="navbar-form navbar-right">
+						<!--< form class="navbar-form navbar-right">
 							<div class="input-group">
 								<input type="text" class="form-control" placeholder="Pencarian Dataset..">
 								<span class="input-group-btn">
 									<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
 								</span>
 							</div>
-      					</form>
+      					</form> -->
 					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
@@ -99,6 +101,7 @@
 	</nav>
 	<body>
 		<div class="container" id="subhead" style="padding-left: 0;padding-right: 0;">
+			<div style="padding:10px 0"></div>
 			<div class="row">
 				@yield('content')
 			</div>

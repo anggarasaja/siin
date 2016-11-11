@@ -161,6 +161,9 @@ return [
 
         //html
         Collective\Html\HtmlServiceProvider::class,
+
+        //datatables
+        Yajra\Datatables\DatatablesServiceProvider::class
     ],
 
     /*

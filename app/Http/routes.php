@@ -27,7 +27,6 @@ Route::get('/oai/tes', 'OaiController@tes');
 Route::get('/oai/list', 'OaiController@getAvailableMetadataFormats');
 Route::get('/oai/records', 'OaiController@getRecords');
 
-Route::get('/rml/input/{status?}', 'RMLController@create')->name('inputRML');
 Route::get('/rml/get-active/', 'RMLController@getActive');
 Route::post('/rml/submit', 'RMLController@store');
 
@@ -39,3 +38,20 @@ Route::get('/updater/update/{type}', 'WebServiceUpdater@updateByType');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+	Route::get('/dashboard','DashboardController@frontpage');
+
+    
+    Route::get('/rml/input/{status?}', 'RMLController@create')->name('inputRML');
+    Route::get('/rml', 'DashboardController@rml');
+
+    Route::get('/datatables/getRml', 'RMLController@getAllDt');
+
+    Route::get('/chart/getKategoriLembaga', 'DashboardController@getKategoriLembaga');
+    Route::get('/chart/getBentukLembaga', 'DashboardController@getBentukLembaga');
+    Route::get('/chart/getLembagaInduk', 'DashboardController@getLembagaInduk');
+    Route::get('/chart/getFokusBidang', 'DashboardController@getFokusBidang');
+    Route::get('/chart/getTrl', 'DashboardController@getTrl');
+
+});
