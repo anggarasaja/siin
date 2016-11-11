@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('tes', function () {
+    return phpinfo() ;
+});
 
 Route::get('/pui-lembaga', 'SaveToCollection@index');
 Route::get('/pui-lembaga/store', 'SaveToCollection@store');

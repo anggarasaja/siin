@@ -15,7 +15,7 @@ class User extends Eloquent implements \Illuminate\Contracts\Auth\Authenticatabl
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'name', 'email', 'password',
     ];
 
     /**
@@ -26,4 +26,8 @@ class User extends Eloquent implements \Illuminate\Contracts\Auth\Authenticatabl
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getAuthPassword(){
+        return $this->password;
+    }
 }

@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     /*
     |--------------------------------------------------------------------------
@@ -164,6 +164,8 @@ return [
 
         //datatables
         Yajra\Datatables\DatatablesServiceProvider::class
+
+        App\Providers\CustomAuthProvider::class,
     ],
 
     /*
