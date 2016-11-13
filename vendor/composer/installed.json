@@ -4304,5 +4304,144 @@
             "laravel4",
             "laravel5"
         ]
+    },
+    {
+        "name": "laracasts/flash",
+        "version": "2.0.1",
+        "version_normalized": "2.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laracasts/flash.git",
+            "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laracasts/flash/zipball/03eec812fd6ae948664ff51b4320785f6d15ee5d",
+            "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "~5.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "dev-master"
+        },
+        "time": "2016-07-11 20:46:02",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Laracasts\\Flash": "src/"
+            },
+            "files": [
+                "src/Laracasts/Flash/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jeffrey Way",
+                "email": "jeffrey@laracasts.com"
+            }
+        ],
+        "description": "Easy flash notifications"
+    },
+    {
+        "name": "infinety/alerts",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Infinety/alerts.git",
+            "reference": "c2b4507e38deff27b28a31ff13f3349b0afe9122"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Infinety/alerts/zipball/c2b4507e38deff27b28a31ff13f3349b0afe9122",
+            "reference": "c2b4507e38deff27b28a31ff13f3349b0afe9122",
+            "shasum": ""
+        },
+        "time": "2016-09-18 15:07:52",
+        "type": "package",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Infinety\\Alerts\\": "/src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Infinety",
+                "email": "create@infinety.co.uk"
+            }
+        ],
+        "description": "A Sweet Alert package for Laravel 5>",
+        "keywords": [
+            "alert",
+            "laravel",
+            "laravel sweet alert",
+            "sweet-alert"
+        ]
+    },
+    {
+        "name": "uxweb/sweet-alert",
+        "version": "1.3.0",
+        "version_normalized": "1.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/uxweb/sweet-alert.git",
+            "reference": "73518d53bd46bbccd6857838b0f0ed268471b654"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/uxweb/sweet-alert/zipball/73518d53bd46bbccd6857838b0f0ed268471b654",
+            "reference": "73518d53bd46bbccd6857838b0f0ed268471b654",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/session": "~5.0",
+            "illuminate/support": "~5.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "^0.9.5",
+            "phpunit/phpunit": "^5.5"
+        },
+        "time": "2016-08-15 00:29:11",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "UxWeb\\SweetAlert\\": "src/SweetAlert/"
+            },
+            "files": [
+                "src/SweetAlert/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Uziel Bueno",
+                "email": "ux.webs@gmail.com"
+            }
+        ],
+        "description": "A simple PHP package to show Sweet Alerts with the Laravel Framework",
+        "keywords": [
+            "alert",
+            "laravel",
+            "notifier",
+            "sweet"
+        ]
     }
 ]

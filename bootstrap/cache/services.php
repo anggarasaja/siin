@@ -30,6 +30,8 @@
     26 => 'Collective\\Html\\HtmlServiceProvider',
     27 => 'Yajra\\Datatables\\DatatablesServiceProvider',
     28 => 'App\\Providers\\CustomAuthProvider',
+    29 => 'Laracasts\\Flash\\FlashServiceProvider',
+    30 => 'Infinety\\Alerts\\AlertServiceProvider',
   ),
   'eager' => 
   array (
@@ -49,6 +51,8 @@
     13 => 'Jenssegers\\Mongodb\\MongodbServiceProvider',
     14 => 'Yajra\\Datatables\\DatatablesServiceProvider',
     15 => 'App\\Providers\\CustomAuthProvider',
+    16 => 'Laracasts\\Flash\\FlashServiceProvider',
+    17 => 'Infinety\\Alerts\\AlertServiceProvider',
   ),
   'deferred' => 
   array (

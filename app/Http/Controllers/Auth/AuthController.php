@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new authentication controller instance.
@@ -53,7 +53,6 @@ class AuthController extends Controller
             'email' => 'required|email|max:255',
             'password' => 'required|min:6|confirmed',
             'jenis' => 'required|max:255',
-            'lembaga' => 'required|max:255',
         ]);
     }
 
@@ -69,7 +68,6 @@ class AuthController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'jenis' => $data['jenis'],
-            'lembaga' => $data['lembaga'],
             'password' => bcrypt($data['password']),
         ]);
     }

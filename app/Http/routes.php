@@ -10,12 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('tes', function () {
-    return phpinfo() ;
+    // return phpinfo() ;
+    $a = Hash::make('bismillah');
+    echo $a;
 });
 
 Route::get('/pui-lembaga', 'SaveToCollection@index');
@@ -57,5 +58,9 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/chart/getLembagaInduk', 'DashboardController@getLembagaInduk');
     Route::get('/chart/getFokusBidang', 'DashboardController@getFokusBidang');
     Route::get('/chart/getTrl', 'DashboardController@getTrl');
+
+    Route::resource('user','userController');
+    Route::get('getUser','userController@getUser');
+    Route::get('userProfile','userController@userProfile');
 
 });

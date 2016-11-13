@@ -32,7 +32,7 @@ class OaiController extends Controller
      */
     private $collection;
 
-    public function __construct($collection,$url)
+    public function __construct($collection="",$url="")
     {
         $oaiUrl   = $url;
         $client = new Client($oaiUrl);
