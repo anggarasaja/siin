@@ -34,7 +34,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: '# of Votes',
+              label: 'Bentuk Lembaga',
               backgroundColor: "#26B99A",
               data: result.data
             }]
@@ -73,7 +73,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: '# of Votes',
+              label: 'Fokus Bidang',
               backgroundColor: "#26B99A",
               data: result.data
             }]
@@ -112,7 +112,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: '# of Votes',
+              label: 'Lembaga Induk',
               backgroundColor: "#26B99A",
               data: result.data
             }]
@@ -152,7 +152,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: '# of Votes',
+              label: 'Kategori Lembaga',
               backgroundColor: "#26B99A",
               data: result.data
             }]
@@ -218,17 +218,16 @@
             // }
           }
         });
-        document.getElementById('js-legend').innerHTML = pieChart.generateLegend();
       },
       error: function(data) {
         console.log(data);
       }
     });
   });
-      // Bar chart
-  Chart.defaults.global.legend = {
-    enabled: false
-  };
+  //     // Bar chart
+  // Chart.defaults.global.legend = {
+  //   enabled: false
+  // };
   
   
   
@@ -306,7 +305,7 @@
             </div>
             <div class="x_content">
               <canvas id="pieChart"></canvas>
-              <div id="js-legend" class="chart-legend"></div>
+              <!-- <div id="js-legend" class="chart-legend"></div> -->
             </div>
           </div>    
           <div class="col-md-6 col-sm-6 col-xs-12">

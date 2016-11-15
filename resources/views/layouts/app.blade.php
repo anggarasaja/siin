@@ -1,119 +1,210 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    	<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		
-		<title>Repositori Metadata Library - Ristekdikti</title>
-		<link rel="icon" href="static/img/kemenristekdikti.png">
-		
-		<!-- <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="static/css/custom.css"> -->
-		{!! Html::style('css/bootstrap.min.css'); !!}
-		{!! Html::style('css/custom-public.css'); !!}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SIIN</title>
 
-		{!! Html::script('js/jquery.min.js'); !!}
-		{!! Html::script('js/bootstrap.min.js'); !!}
+	<meta name="description" content="Heera HTML5 Template by Jewel Theme" >
 
-		
-		<!-- <script type="text/javascript" src="static/js/jquery.min.js"></script> -->
-		<!-- <script type="text/javascript" src="static/js/bootstrap.min.js"></script> -->
-		<script type="text/javascript">
-			$( document ).ready(function() {
-			    $('#nav_big').affix({
-					offset: {
-						top: $('header').height()+$('#nav_mini').height()
-					}
-				});	
-			});
-		</script>
-	</head>
-	<header>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<div style="float:left">
-						<img src="{{URL::asset('img/kemenristekdikti.png')}}" id="img-head">
-					</div>
-					<h3>Repository Metadata Library</h3>
-					<p>Kementerian Riset Teknologi dan Pendidikan Tinggi</p>
-				</div>
-			</div>
-		</div>
-	</header>
-	<nav class="navbar navbar-default hidden-xs" id="nav_mini">
-		<div class="container">
-			<div class="col-xs-12">
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-					<li><a href="{{ url('/login') }}">&nbsp;&nbsp;Login&nbsp;&nbsp;</a></li>
-					<li><a href="{{ url('/register') }}" style="border-right: 1px solid #AAA">Register</a></li>
-					@else
-					<li><a href="{{ url('/logout') }}">&nbsp;&nbsp;Logout&nbsp;&nbsp;</a></li>
-					@endif
-				</ul>
-			</div>
-		</div><!-- /.container-fluid -->
-	</nav>
-	<nav class="navbar navbar-default" id="nav_big">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/">RISTEKDIKTI</a>
-			</div>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/">Home</a></li>
-					@if (Auth::user())
-					<li><a href="/dashboard">Dashboard</a></li>
-					<!-- <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Organisasi <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">PDII LIPI</a></li>
-							<li><a href="#">PUI RISTEKDIKTI</a></li>
-							<li><a href="#">SIMLITABMAS</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">RISTEKDIKTI</a></li>
-						</ul>
-					</li> -->
-					<!-- <li><a href="#">Data Portal</a></li> -->
-					@endif
-					<li>
-						<!--< form class="navbar-form navbar-right">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Pencarian Dataset..">
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-								</span>
-							</div>
-      					</form> -->
-					</li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-	<body>
-		<div class="container" id="subhead" style="padding-left: 0;padding-right: 0;">
-			<div style="padding:10px 0"></div>
-			<div class="row">
-				@yield('content')
-			</div>
-			<div class="push"></div>
-		</div>
-		
-	</body>
-	<footer style="padding:20px; background-color: white; border-top: 4px solid #0060AA">
-		<div class="text-center">
-			<a href="">Dataset</a> | <a href="">Organisasi</a> | <a href="">Peta Situs</a> | <a href="">Kontak</a>	
-			<p>&copy 2016 - sekarang. Kementerian Riset Teknologi dan Pendidikan Tinggi.<br /> 	 
-			Hak Cipta dilindungi Undang - Undang</p>
-		</div>
-	</footer>
-</html> 
+	<meta name="author" content="Jewel Theme">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+	<!-- Bootstrap  -->
+  {!! Html::style('css/bootstrap.min.css'); !!}
+	<!-- icon fonts font Awesome -->
+  {!! Html::style('css/font-awesome.min.css'); !!}
+	<!-- Import Magnific Pop Up Styles -->
+
+	<!-- Import Custom Styles -->
+  {!! Html::style('css/style.css'); !!}
+
+	<!-- Import Animate Styles -->
+  {!! Html::style('css/animate.min.css'); !!}
+
+
+	<!-- Import owl.carousel Styles -->
+  {!! Html::style('css/owl.carousel.css'); !!}
+
+	<!-- Import Custom Responsive Styles -->
+   {!! Html::style('css/responsive.css'); !!}
+
+   @stack('styles')
+
+   @stack('scripts-head')
+
+	
+	<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  		<![endif]-->
+
+  	</head>
+  	<body class="header-fixed-top">
+
+  		<div id="page-top" class="page-top"></div><!-- /.page-top -->
+
+  		<section id="top-contact" class="top-contact">
+  			<div class="container">
+  				<div class="row">
+  					<div class="col-sm-8 pull-left">
+  						<ul class="contact-list">
+  							<li>
+  								<a class="site-name" href="#">
+  									<span class="top-icon"><i class="fa fa-link"></i></span>
+  									www.sitename.com
+  								</a>
+  							</li>
+  							<li>
+  								<a class="info" href="#">
+  									<span class="top-icon"><i class="fa fa-envelope"></i></span>
+  									info@sitename.com
+  								</a>
+  							</li>
+  							<li>
+  								<a class="phone-no" href="#">
+  									<span class="top-icon"><i class="fa fa-phone"></i></span>
+  									8888 888888
+  								</a>
+  							</li>
+  						</ul>
+  					</div>
+
+  					<div class="col-sm-4 pull-right">
+  						<div class="top-social">
+  							<ul>
+  								<li>
+  									<a href="#" class="top-icon fa fa-facebook"></a>
+  								</li>
+  								<li>
+  									<a href="#" class="top-icon fa fa-twitter"></a>
+  								</li>
+  								<li>
+  									<a href="#" class="top-icon fa fa-linkedin"></a>
+  								</li>
+  							</ul>
+  						</div>
+  					</div>
+  				</div><!-- /.row -->
+  			</div><!-- /.container -->
+  		</section><!-- /#top-contact -->
+
+
+
+  		<section id="site-banner" class="site-banner text-center">
+  			<div class="container">
+  				<div class="site-logo">
+  					<a href="./"><img src="{{URL::asset('img/logo.png')}}" alt="Site Logo"></a>
+  				</div><!-- /.site-logo -->
+  			</div><!-- /.container -->
+  		</section><!-- /#site-banner -->
+
+
+
+  		<header id="main-menu" class="main-menu">
+  			<div class="container">
+  				<div class="row">
+  					<div class="col-sm-7">
+  						<div class="navbar-header">
+  							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+  								<i class="fa fa-bars"></i>
+  							</button>
+                <div class="menu-logo">
+                  <a href="./"><img src="{{URL::asset('img/logo.png')}}" alt="menu Logo"></a>
+                </div><!-- /.menu-logo -->
+              </div>
+              <nav id="menu" class="menu collapse navbar-collapse">
+               <ul id="headernavigation" class="menu-list nav navbar-nav">
+                <li class="active"><a href="#page-top">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <!--<li><a href="#portfolio">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#latest-post">Blog</a></li>
+                <li><a href="#contact">Contact</a></li> -->
+              </ul><!-- /.menu-list -->
+            </nav><!-- /.menu-list -->
+          </div>
+
+          <div class="col-sm-5">
+            <div class="menu-search pull-right">
+             <form role="search" class="search-form" action="#" method="get">
+              <input class="search-field" type="text" name="s" id="s" placeholder="Search Here" required>
+              <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
+            </form><!-- /.search-form -->
+          </div><!-- /.menu-search -->
+        </div>
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </header><!-- /#main-menu -->
+
+@yield('content')
+
+<footer>
+  
+
+  <div id="footer-bottom" class="footer-bottom text-center">
+    <div class="container">
+      <div id="copyright" class="copyright">
+        &copy; <a href="http://demos.jeweltheme.com/heera">SIIN - KEMENRISTEKDIKTI</a>  2016 | Developed by <a href="http://jeweltheme.com">Universitas Gunadarma</a>
+      </div><!-- /#copyright -->
+    </div>
+  </div><!-- /#footer-bottom -->
+</footer>
+
+
+
+<div id="scroll-to-top" class="scroll-to-top">
+  <span>
+    <i class="fa fa-chevron-up"></i>    
+  </span>
+</div><!-- /#scroll-to-top -->
+
+
+<!-- Include jquery.min.js plugin -->
+{!! Html::script('js/jquery-2.1.0.min.js'); !!}
+
+<!-- Javascript Plugins  -->
+{!! Html::script('js/plugins.js'); !!}
+
+<!-- Custom Functions  -->
+{!! Html::script('js/functions.js'); !!}
+
+{!! Html::script('js/wow.min.js'); !!}
+
+
+
+
+<script>
+
+ $(document).ready(function() {
+
+  // /* -------- One page Navigation ----------*/
+  // $('#main-menu #menu').onePageNav({
+  //   currentClass: 'active',
+  //   changeHash: false,
+  //   scrollSpeed: 1500,
+  //   scrollThreshold: 0.5,
+  //   scrollOffset: 95,
+  //   filter: ':not(.sub-menu a, .not-in-home)',
+  //   easing: 'swing'
+  // }); 
+
+
+  /*----------- Google Map - with support of gmaps.js ----------------*/
+
+  function isMobile() { 
+   return ('ontouchstart' in document.documentElement);
+ }
+});
+
+
+
+</script>
+@stack('scripts')
+
+</body>
+</html>
+
