@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>SIIN</title>
 
-	<meta name="description" content="Heera HTML5 Template by Jewel Theme" >
+	<meta name="description" content="" >
 
 	<meta name="author" content="Jewel Theme">
 
@@ -118,8 +118,15 @@
               </div>
               <nav id="menu" class="menu collapse navbar-collapse">
                <ul id="headernavigation" class="menu-list nav navbar-nav">
-                <li class="active"><a href="#page-top">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
+                @if (Auth::guest())
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+                @else
                 <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="{{ url('/logout') }}">Logout</a></li>
+                
+                @endif
                 <!--<li><a href="#portfolio">Projects</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#latest-post">Blog</a></li>
@@ -148,7 +155,7 @@
   <div id="footer-bottom" class="footer-bottom text-center">
     <div class="container">
       <div id="copyright" class="copyright">
-        &copy; <a href="http://demos.jeweltheme.com/heera">SIIN - KEMENRISTEKDIKTI</a>  2016 | Developed by <a href="http://jeweltheme.com">Universitas Gunadarma</a>
+        &copy; SIIN - KEMENRISTEKDIKTI 2016 | Developed by Universitas Gunadarma
       </div><!-- /#copyright -->
     </div>
   </div><!-- /#footer-bottom -->

@@ -43,7 +43,12 @@ Route::get('/updater/update/{type}', 'WebServiceUpdater@updateByType');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
-
+Route::get('/chart/getKategoriLembaga', 'DashboardController@getKategoriLembaga');
+Route::get('/chart/getBentukLembaga', 'DashboardController@getBentukLembaga');
+Route::get('/chart/getLembagaInduk', 'DashboardController@getLembagaInduk');
+Route::get('/chart/getFokusBidang', 'DashboardController@getFokusBidang');
+Route::get('/chart/getTrl', 'DashboardController@getTrl');
+    
 Route::group(['middleware' => ['web', 'auth']], function () {
 	Route::get('/dashboard','DashboardController@frontpage');
 
@@ -53,11 +58,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
     Route::get('/datatables/getRml', 'RMLController@getAllDt');
 
-    Route::get('/chart/getKategoriLembaga', 'DashboardController@getKategoriLembaga');
-    Route::get('/chart/getBentukLembaga', 'DashboardController@getBentukLembaga');
-    Route::get('/chart/getLembagaInduk', 'DashboardController@getLembagaInduk');
-    Route::get('/chart/getFokusBidang', 'DashboardController@getFokusBidang');
-    Route::get('/chart/getTrl', 'DashboardController@getTrl');
+
 
     Route::resource('user','userController');
     Route::get('getUser','userController@getUser');

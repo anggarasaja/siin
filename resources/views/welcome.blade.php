@@ -28,16 +28,17 @@
         <div class="slider-icon">
          <i class="fa fa-desktop"></i>
        </div><!-- /.slider-icon -->
-       <h3 class="carousel-title">Let's Join With <span>HEERA</span></h3>
-       <a class="btn text-btn" href="#">More Info</a>
+       <h3 class="carousel-title"><span>SIIN</span> Sistem Informasi IPTEK Nasional</h3>
      </div><!-- /.carousel-caption -->
    </div>
 
    <div class="item item-2">
     <img src="{{URL::asset('img/slider/2.png')}}">
-    <div class="carousel-caption">   
-      <h3 class="carousel-title">Express Yourself With <span>HEERA</span></h3>
-      <a class="btn text-btn" href="#">Let's Start</a>
+    <div class="carousel-caption">  
+        <div class="slider-icon">
+         <i class="fa fa-desktop"></i>
+       </div><!-- /.slider-icon --> 
+      <h3 class="carousel-title"><span>SIIN</span> Sistem Informasi IPTEK Nasional</h3>
     </div><!-- /.carousel-caption -->
   </div>
 </div>
@@ -83,7 +84,22 @@
                   </article>
                 </div><!-- /.item -->
               </div>
-              <div class="col-sm-6">
+             <div class="col-sm-6">
+                <div class="item">
+                  <article class="post type-post">
+                    <div class="post-content">
+                      <h2 class="entry-title"><a href="blog-single.html">Unit LitBang berdasarkan Bentuk Kelembagaan</a></h2> 
+                        <canvas id="bentukLembaga"></canvas>
+                    </div><!-- /.post-content -->
+                  </article>
+                </div><!-- /.item -->
+              </div> 
+          </div>
+           
+            <div class="row">
+                
+            
+            <div class="col-sm-6">
                 <div class="item">
                   <article class="post type-post">
                     <div class="post-content">
@@ -93,30 +109,18 @@
                   </article>
                 </div><!-- /.item -->
               </div>
-          </div>
-           
           
-          <div class="col-sm-6">
-            <div class="item">
-              <article class="post type-post">
-                <div class="post-content">
-                  <h2 class="entry-title"><a href="blog-single.html">Unit LitBang berdasarkan Bentuk Kelembagaan</a></h2> 
-                    <canvas id="bentukLembaga"></canvas>
-                </div><!-- /.post-content -->
-              </article>
-            </div><!-- /.item -->
-          </div> 
-          <div class="col-sm-6">
-            <div class="item">
-              <article class="post type-post">
-                <div class="post-content">
-                  <h2 class="entry-title"><a href="blog-single.html">Unit LitBang berdasarkan Fokus Bidang</a></h2> 
-                    <canvas id="fokusBidang"></canvas>
-                </div><!-- /.post-content -->
-              </article>
-            </div><!-- /.item -->
+              <div class="col-sm-6">
+                <div class="item">
+                  <article class="post type-post">
+                    <div class="post-content">
+                      <h2 class="entry-title"><a href="blog-single.html">Unit LitBang berdasarkan Fokus Bidang</a></h2> 
+                        <canvas id="fokusBidang"></canvas>
+                    </div><!-- /.post-content -->
+                  </article>
+                </div><!-- /.item -->
+              </div>
           </div>
-          
       </div><!-- /.latest-posts -->
     </div><!-- /.row -->
   </div><!-- /.post-area -->

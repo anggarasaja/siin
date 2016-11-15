@@ -45,7 +45,7 @@
     {!! Html::script('vendors/fastclick/lib/fastclick.js'); !!}
     {!! Html::script('vendors/nprogress/nprogress.js'); !!}
     {!! Html::script('js/sweetalert.js'); !!}
-    @include('Alerts::alerts')
+    
     
     @stack('scripts-head')
 
