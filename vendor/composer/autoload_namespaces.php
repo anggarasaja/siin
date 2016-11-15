@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Svg\\' => array($vendorDir . '/phenx/php-svg-lib/src'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'Phpoaipmh' => array($vendorDir . '/caseyamcl/phpoaipmh/src', $vendorDir . '/caseyamcl/phpoaipmh/tests'),
     'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
@@ -16,8 +17,7 @@ return array(
     'Jenssegers\\Eloquent' => array($vendorDir . '/jenssegers/mongodb/src'),
     'JakubOnderka\\PhpConsoleHighlighter' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
-    'Evenement' => array($vendorDir . '/evenement/evenement/src'),
+    'FontLib\\' => array($vendorDir . '/phenx/php-font-lib/src'),
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
-    'Danmichaelo\\QuiteSimpleXMLElement' => array($vendorDir . '/danmichaelo/quitesimplexmlelement/src'),
     'Cron' => array($vendorDir . '/mtdowling/cron-expression/src'),
 );

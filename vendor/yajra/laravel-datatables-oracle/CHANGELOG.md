@@ -8,6 +8,40 @@
 
 ##Change Log
 
+### v6.21.1 - 2016-10-25
+- Do not convert column to raw statement. Thanks to Nick Howell for pointing the issue.
+
+### v6.21.0 - 2016-10-22
+- Support to morphToMany. PR #804, credits to @pcastrotigre
+- Update fractal to ~0.14. Credits to @tyloo
+- Refactor HasOneOrMany as suggested in #733
+- Fix CS.
+
+### v6.20.0 - 2016-10-13
+- Support of using soft deletes trait in models.
+- PR #786, credits to @DDiimmkkaass.
+
+### v6.19.0 - 2016-09-24
+- Support regex column searches when using CollectionEngine.
+- PR #765, credits to @cadenzajon.
+
+### v6.18.2 - 2016-09-13
+- Make snappy pdf generation configurable via datatables config file.
+- Fix loading of printPreview using loadHTML.
+
+### v6.18.1 - 2016-09-05
+- Fix to allow join of eager loaded column based on a HasMany-relationship.
+- Fix #732, PR #733 credits to @SRautila.
+
+### v6.18.0 - 2016-08-25
+- Fix eager loaded model searching function. Fix #698 and #710.
+- Add method to skip pagination. Credits to @Nks PR #707
+- Fix collection filtered total records. If filtered total > total records, use total records.
+
+### v6.17.1 - 2016-08-23
+- Use dompdf v0.7.x.
+- Implement/fix setTotalRecords on collection engine.
+
 ### v6.17.0 - 2016-08-10
 - Add setter and getter for table attributes.
 - PR #688, credits to @ssipos90.

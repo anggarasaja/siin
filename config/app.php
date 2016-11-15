@@ -167,8 +167,6 @@ return [
 
         App\Providers\CustomAuthProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-        Infinety\Alerts\AlertServiceProvider::class
-
     ],
 
     /*

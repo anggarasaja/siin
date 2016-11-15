@@ -12,8 +12,7 @@
         "laravelcollective/html": "^5.2",
         "illuminate/html": "^5.0",
         "yajra/laravel-datatables-oracle": "~6.0",
-        "laracasts/flash": "^2.0",
-        "infinety/alerts": "*@dev"
+        "laracasts/flash": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
