@@ -104,6 +104,14 @@ abstract class BaseEngine implements DataTableEngineContract
      * @var bool
      */
     protected $autoFilter = true;
+    
+    /**
+     * Select trashed records in count function for models with soft deletes trait.
+     * By default we do not select soft deleted records
+     *
+     * @var bool
+     */
+    protected $withTrashed = false;
 
     /**
      * Callback to override global search.
@@ -172,6 +180,13 @@ abstract class BaseEngine implements DataTableEngineContract
      * @var \Closure
      */
     protected $orderCallback;
+
+    /**
+     * Skip paginate as needed.
+     *
+     * @var bool
+     */
+    protected $skipPaging = false;
 
     /**
      * Array of data to append on json response.
@@ -384,6 +399,19 @@ abstract class BaseEngine implements DataTableEngineContract
     {
         $this->columnDef['escape'] = $columns;
 
+        return $this;
+    }
+    
+    /**
+     * Change withTrashed flag value.
+     *
+     * @param bool $withTrashed
+     * @return $this
+     */
+    public function withTrashed($withTrashed = true)
+    {
+        $this->withTrashed = $withTrashed;
+        
         return $this;
     }
 
@@ -629,7 +657,7 @@ abstract class BaseEngine implements DataTableEngineContract
      */
     public function paginate()
     {
-        if ($this->request->isPaginationable()) {
+        if ($this->request->isPaginationable() && ! $this->skipPaging) {
             $this->paging();
         }
     }
@@ -838,6 +866,29 @@ abstract class BaseEngine implements DataTableEngineContract
     }
 
     /**
+     * Set total records manually.
+     *
+     * @param int $total
+     * @return $this
+     */
+    public function setTotalRecords($total)
+    {
+        $this->totalRecords = $total;
+
+        return $this;
+    }
+
+    /**
+     * Skip pagination as needed.
+     */
+    public function skipPaging()
+    {
+        $this->skipPaging = true;
+
+        return $this;
+    }
+
+    /**
      * Check if column is blacklisted.
      *
      * @param string $column
@@ -950,18 +1001,5 @@ abstract class BaseEngine implements DataTableEngineContract
     protected function isOracleSql()
     {
         return in_array($this->database, ['oracle', 'oci8']);
-    }
-
-    /**
-     * Set total records manually.
-     *
-     * @param int $total
-     * @return $this
-     */
-    public function setTotalRecords($total)
-    {
-        $this->totalRecords = $total;
-
-        return $this;
     }
 }

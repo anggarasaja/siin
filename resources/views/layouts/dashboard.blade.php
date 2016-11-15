@@ -34,6 +34,8 @@
     {!! Html::style('vendors/iCheck/skins/flat/green.css'); !!}
     {!! Html::style('css/datepicker/bootstrap-datepicker.min.css'); !!}
     {!! Html::style('build/css/custom.min.css'); !!}
+    {!! Html::style('css/sweetalert.css'); !!}
+
     @stack('styles')
     
     {!! Html::script('vendors/jquery/dist/jquery.min.js'); !!}
@@ -42,6 +44,8 @@
     {!! Html::script('vendors/bootstrap/dist/js/bootstrap.min.js'); !!}
     {!! Html::script('vendors/fastclick/lib/fastclick.js'); !!}
     {!! Html::script('vendors/nprogress/nprogress.js'); !!}
+    {!! Html::script('js/sweetalert.js'); !!}
+    @include('Alerts::alerts')
     
     @stack('scripts-head')
 
@@ -94,7 +98,7 @@
                 <ul class="nav side-menu">
                   <li><a href="/dashboard"><i class="fa fa-bar-chart-o"></i> Visualisasi Data</span></a></li>
                   <li><a href="/rml"><i class="fa fa-cloud"></i> API Services</a></li>
-                  <li><a href="contentUser.php"><i class="fa fa-users"></i> Manajemen Pengguna</a></li>
+                  <li><a href="{{ URL::to('user') }}"><i class="fa fa-users"></i> Manajemen Pengguna</a></li>
                 </ul>
               </div>
             </div> 
@@ -112,11 +116,11 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{URL::asset('images/user.png')}}" alt="">{{Auth::user()->username}}
+                    <img src="{{URL::asset('img/pui.png')}}" alt="">{{Auth::user()->username}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profil</a></li>
+                    <li><a href="{{ url('user/'.Auth::user()->id) }}"> Profil</a></li>
                     <li>
                       <a href="javascript:;">
                         <span>Pengaturan</span>

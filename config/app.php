@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -166,6 +166,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
 
         App\Providers\CustomAuthProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
     ],
 
     /*

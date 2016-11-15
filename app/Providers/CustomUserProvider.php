@@ -26,7 +26,7 @@ public function retrieveById($identifier)
 
     if($qry->count() >0)
     {
-        $user = $qry->select('id', 'name', 'username', 'email', 'password', 'jenis', 'lembaga')->first();
+        $user = $qry->select('id', 'name', 'username', 'email', 'password', 'jenis')->first();
 
         $attributes = array(
             'id' => $user->id,
@@ -35,7 +35,6 @@ public function retrieveById($identifier)
             'email' => $user->email,
             'name' => $user->name,
             'jenis' => $user->jenis,
-            'lembaga' => $user->lembaga,
         );
 
         return $user;
@@ -57,7 +56,7 @@ public function retrieveByToken($identifier, $token)
 
     if($qry->count() >0)
     {
-        $user = $qry->select('id', 'name', 'username', 'email', 'password', 'jenis', 'lembaga')->first();
+        $user = $qry->select('id', 'name', 'username', 'email', 'password', 'jenis')->first();
 
         $attributes = array(
             'id' => $user->id,
@@ -66,7 +65,6 @@ public function retrieveByToken($identifier, $token)
             'email' => $user->email,
             'name' => $user->name,
             'jenis' => $user->jenis,
-            'lembaga' => $user->lembaga,
         );
 
         return $user;
@@ -107,7 +105,7 @@ public function retrieveByCredentials(array $credentials)
 
     if($qry->count() > 0)
     {
-        $user = $qry->select('id','username','email','password','jenis','lembaga')->first();
+        $user = $qry->select('id','username','email','password','jenis')->first();
 
 
         return $user;
