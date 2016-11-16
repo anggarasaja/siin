@@ -6,7 +6,7 @@ use App\Http\Controllers\RMLController;
 use App\Http\Controllers\OaiController;
 use App\Http\Controllers\JsonController;
 use App\WebServiceModel;
-
+use App\Jobs\UpdateData;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -89,6 +89,10 @@ class WebServiceUpdater extends Controller
         //
     }
 
+    public function UpdateByIdAsync($id){
+        $this->dispatch(new UpdateData($id));
+    }
+
     public function updateLocal(){
         $RML = new RMLController;
         $activeServices = $RML->getActive();
@@ -150,7 +154,7 @@ class WebServiceUpdater extends Controller
     }
     public function getJson($document){
         echo $document->link;
-        $jsonController = new JsonController($document->nama_collection,$document->link);
+        $jsonController = new JsonController($document->nama_collection,$document->link,$document->posisi_record);
         $jsonController->getRecords();
     }
 }

@@ -1,6 +1,7 @@
  @extends('layouts.dashboard')
 @section('content')
     <div class="col-md-12">
+
         <div class="x_panel">
         <h2>Daftar Web Service yang tersedia</h2>
         <hr>

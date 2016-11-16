@@ -9,5 +9,5 @@ class RMLModel extends Eloquent
 {
     //
     protected $collection = "rml";
-    protected $fillable = array("penyedia","nama_service","deskripsi","jenis","link","aktif","nama_collection");
+    protected $fillable = array("penyedia","nama_service","deskripsi","jenis","link","aktif","nama_collection","posisi_record");
 }

@@ -17,11 +17,18 @@ class JsonController extends Controller
 
     private $collection;
     private $url;
+    private $recordsPosition;
 
-    public function __construct($collection,$url)
+    public function __construct($collection,$url,$recordsPosition=0)
     {
         $this->url   = $url;
         $this->collection = $collection;
+        if($recordsPosition == null){
+            $this->recordsPosition = 0;
+        } else {
+            $this->recordsPosition = $recordsPosition;
+        }
+        
     }
 
     public function index()
@@ -100,13 +107,48 @@ class JsonController extends Controller
             $json = file_get_contents($this->url);
             $obj = json_decode($json, true);
             $i=0;
-            foreach ($obj as $document) {
-                $model = new JsonModel($document);
-                $model->setTable($this->collection);
-                $model->save();
-                $i++;
-            }   
+            echo $this->recordsPosition;
+            // exit;
+            DB::connection()->disableQueryLog();
+            $this->recursiveFunction($obj);
+            // foreach ($obj as $document) {
+            //     if($recordsPosition == 1){
+            //         foreach ($document as $value) {
+            //             # code...
+            //             print_r($value);
+            //             echo "<br><br>";
+            //         }
+            //     }
+            //     // $model = new JsonModel;
+            //     // $model->setTable($this->collection);
+            //     // $model->data = $document;
+            //     // $model->save();
+            //     // $i++;
+            // }   
                 
         });
+    }
+
+    public function recursiveFunction($array,$counter=0){
+        
+        foreach ($array as $document) {
+            if($counter != $this->recordsPosition){
+                echo $counter;
+                $counter++;
+                $this->recursiveFunction($document,$counter);
+            } else {
+                $model = new JsonModel;
+                $model->setTable($this->collection);
+                $model->data = $document;
+                $model->save();
+                
+                
+            }
+            
+        }
+
+
+        
+         
     }
 }

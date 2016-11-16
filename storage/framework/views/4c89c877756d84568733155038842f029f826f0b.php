@@ -1,6 +1,7 @@
  
 <?php $__env->startSection('content'); ?>
     <div class="col-md-12">
+
         <div class="x_panel">
         <h2>Daftar Web Service yang tersedia</h2>
         <hr>

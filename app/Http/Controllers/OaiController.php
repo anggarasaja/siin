@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\OaiModel;
 
 use Phpoaipmh\Client;
 use Phpoaipmh\Endpoint;
-
-use Scriptotek\OaiPmh\Client as OaiPmhClient;
 
 class OaiController extends Controller
 {
@@ -32,7 +30,7 @@ class OaiController extends Controller
      */
     private $collection;
 
-    public function __construct($collection="",$url="")
+    public function __construct($collection,$url)
     {
         $oaiUrl   = $url;
         $client = new Client($oaiUrl);
@@ -99,31 +97,15 @@ class OaiController extends Controller
         // $oaim = new OaiModel;
         // $oaim->unguard();
         // $oaim->setTable('lkjl');
+        DB::connection()->disableQueryLog();
         OaiModel::unguarded(function() {
-            // $data = array();
-            // List identifiers
-            // $oaiModel= new OaiModel;
-            // $oaiModel= 
-
-            // print_r($oaiModel);
-            // exit;
-            // exit;
             if (empty($this->metadataIterator)) {
                 $this->metadataIterator = $this->endpoint->listMetadataFormats();
             } else {
                 $this->metadataIterator->rewind(); // rewind the iterator
             }
-            // Auto-determine a metadata prefix to use for getting records
             $mdPrefix = (string) $this->metadataIterator->current()->metadataPrefix;
-            // $data = array(
-            //     'header' => array('Identifier', 'Title', 'usageDataResourceURL'),
-            //     'rows' => array(),
-            // );
-            // print_r($mdPrefix);
-            // Iterate
             $recordIterator = $this->endpoint->listRecords($mdPrefix);
-            // var_dump($recordIterator);
-            // echo "<br>";
             $i =0;
             
             foreach($recordIterator as $rec) {
@@ -132,39 +114,16 @@ class OaiController extends Controller
                     $arrayNamespaces[$key]=$value;
                 }
                 $dc = $rec->metadata->children($namespaces['oai_dc'])->dc->children($namespaces['dc']);
-                // echo $dc->publisher;
                 foreach ($dc as $key => $value) {
                     $arrayMetadata[$key]=$value->__toString();
                 }
 
                 $model = new OaiModel(['header'=>$arrayNamespaces, 'metadata'=>$arrayMetadata]);
                 $model->setTable($this->collection);
-                // var_dump($model);
                 $model->save();
-                // print_r($oaim);
-                // echo "<br><br><br>";
-                // OaiModel::create(['header'=>$arrayNamespaces, 'metadata'=>$arrayMetadata]);
-                // print_r($create);
-                // echo "<br><br><br>";
-                // print_r($arrayMetadata);
                 $i++;
-                // exit;
             }
             echo $i;
-
-            // for ($i = 0; $i < 10; $i++) {
-            //     $rec = $recordIterator->next();
-            //     var_dump($rec->metadata->children('oai_dc', 1)->dc->children('dc', 1)->title[0]->__toString());
-            //     $data['rows'][] = array(
-            //         $rec->header->identifier,
-            //         // Truncate title
-
-            //         substr($rec->metadata->commParadata->paradataTitle->string->__toString(), 0),
-
-            //         $rec->metadata->commParadata->usageDataResourceURL
-            //     );
-            // }
-
         });
         
     }

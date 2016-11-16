@@ -97,7 +97,7 @@
   		<section id="site-banner" class="site-banner text-center">
   			<div class="container">
   				<div class="site-logo">
-  					<a href="./"><img src="{{URL::asset('img/logo.png')}}" alt="Site Logo"></a>
+  					<a href="./"><img src="{{URL::asset('img/Logo_SIIN_small.png')}}" alt="Site Logo"></a>
   				</div><!-- /.site-logo -->
   			</div><!-- /.container -->
   		</section><!-- /#site-banner -->
@@ -113,7 +113,7 @@
   								<i class="fa fa-bars"></i>
   							</button>
                 <div class="menu-logo">
-                  <a href="./"><img src="{{URL::asset('img/logo.png')}}" alt="menu Logo"></a>
+                  <a href="./"><img src="{{URL::asset('img/Logo_SIIN.png')}}" alt="menu Logo"></a>
                 </div><!-- /.menu-logo -->
               </div>
               <nav id="menu" class="menu collapse navbar-collapse">

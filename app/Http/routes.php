@@ -37,6 +37,9 @@ Route::post('/rml/submit', 'RMLController@store');
 
 
 Route::get('/updater/update/', 'WebServiceUpdater@updateLocal');
+//laravel queue
+Route::get('/updater/updateId/{id}', 'WebServiceUpdater@UpdateByIdAsync');
+
 Route::get('/updater/update/{type}', 'WebServiceUpdater@updateByType');
 
 
@@ -54,7 +57,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
     
     Route::get('/rml/input/{status?}', 'RMLController@create')->name('inputRML');
-    Route::get('/rml', 'DashboardController@rml');
+    Route::get('/rml/edit/{id}', 'RMLController@edit')->name('editRML');
+    Route::get('/rml', 'DashboardController@rml')->name('rml');
 
     Route::get('/datatables/getRml', 'RMLController@getAllDt');
 
