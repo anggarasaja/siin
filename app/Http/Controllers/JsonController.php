@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\JsonModel;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 
 class JsonController extends Controller
