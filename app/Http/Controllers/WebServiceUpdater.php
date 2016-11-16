@@ -90,13 +90,15 @@ class WebServiceUpdater extends Controller
     }
 
     public function UpdateByIdAsync($id){
-        $this->dispatch(new UpdateData($id));
+        print_r($id);
+        $tes = $this->dispatch(new UpdateData($id));
+        print_r($tes);
     }
 
     public function updateLocal(){
         $RML = new RMLController;
         $activeServices = $RML->getActive();
-        $this->execUpdate($documents);
+        $this->execUpdate($activeServices);
     }
 
     public function updateByType($type){

@@ -6,9 +6,10 @@ use App\Jobs\Job;
 use App\Http\Controllers\RMLController;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UpdateData extends Job implements ShouldQueue
+class UpdateData extends Job implements SelfHandling,ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 
@@ -31,19 +32,15 @@ class UpdateData extends Job implements ShouldQueue
      */
     public function handle()
     {
-        //
+        print_r($this->id);
         $RML = new RMLController;
         $documents = $RML->getId($this->id);
-        // print_r($documents);
-        $this->execUpdate($documents);
+        
+        // if($documents->count()==0){
+        //     echo "Web Service tidak ditemukan";
+        //     exit;
+        // }
 
-    }
-
-    public function execUpdate($documents){
-        if($documents->count()==0){
-            echo "Web Service tidak ditemukan";
-            exit;
-        }
         foreach ($documents as $document) {
             switch ($document->jenis) {
                 case 'oai':
@@ -63,5 +60,19 @@ class UpdateData extends Job implements ShouldQueue
             }
         
         }
+    }
+
+    /**
+     * Handle a job failure.
+     *
+     * @return void
+     */
+    public function failed()
+    {
+        echo "gagal";
+    }
+
+    public function execUpdate($documents){
+        
     }
 }

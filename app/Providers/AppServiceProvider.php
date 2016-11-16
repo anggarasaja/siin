@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use Queue;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Queue::after(function ($connection, $job, $data) {
+            echo "finish";
+        });
     }
 
     /**

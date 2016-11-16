@@ -31,7 +31,7 @@ class RMLController extends Controller
     {
         //
         // $rml = new RMLModel;
-        return view('rml.create',["status"=>$status,'proses'=>'create']);
+        return view('rml.input',["status"=>$status,'proses'=>'create']);
     }
 
 
@@ -95,7 +95,7 @@ class RMLController extends Controller
     {
         //
         $data = $this->getId($id);
-        return view('rml.create',['data'=>$data,'status'=>$status,'proses'=>'edit']);
+        return view('rml.edit',['data'=>$data,'status'=>$status,'proses'=>'edit']);
     }
 
     /**
