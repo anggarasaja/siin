@@ -111,16 +111,16 @@ class DashboardController extends Controller
     
 
     public function getKategoriLembaga(){
-        return $this->barChart("PUI-lembaga-json","kategori_lembaga");
+        return $this->barChart(env('PUI_LEMBAGA', 'PUI-produk-json'),"kategori_lembaga");
     }
     public function getBentukLembaga(){
-        return $this->barChart("PUI-lembaga-json","bentuk_lembaga");
+        return $this->barChart(env('PUI_LEMBAGA',"PUI-lembaga-json"),"bentuk_lembaga");
     }
     public function getLembagaInduk(){
-        return $this->barChart("PUI-lembaga-json","lembaga_induk");
+        return $this->barChart(env('PUI_LEMBAGA',"PUI-lembaga-json"),"lembaga_induk");
     } 
     public function getFokusBidang(){
-        return $this->barChart("PUI-lembaga-json","fokus_bidang");
+        return $this->barChart(env('PUI_LEMBAGA',"PUI-lembaga-json"),"fokus_bidang");
     }
 
     public function getTrl(){
@@ -128,7 +128,7 @@ class DashboardController extends Controller
         $total=array();
         $persentase = array();
         $color = array();
-        $records = DB::collection('PUI-produk-json')->raw(function($collection){
+        $records = DB::collection(env('PUI_PRODUK','PUI-produk-json'))->raw(function($collection){
             return $collection->aggregate([
                         ['$group' => 
                             [
