@@ -4,6 +4,9 @@ namespace App\Jobs;
 
 use App\Jobs\Job;
 use App\Http\Controllers\RMLController;
+
+use App\Http\Controllers\OaiController;
+use App\Http\Controllers\JsonController;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
@@ -74,5 +77,14 @@ class UpdateData extends Job implements SelfHandling,ShouldQueue
 
     public function execUpdate($documents){
         
+    }
+    public function getOai($document){
+        $oaiController = new OaiController($document->nama_collection,$document->link);
+        $oaiController->getRecords();
+    }
+    public function getJson($document){
+        echo $document->link;
+        $jsonController = new JsonController($document->nama_collection,$document->link,$document->posisi_record);
+        $jsonController->getRecords();
     }
 }

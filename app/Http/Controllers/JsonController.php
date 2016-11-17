@@ -106,8 +106,8 @@ class JsonController extends Controller
         JsonModel::unguarded(function() {
             $json = file_get_contents($this->url);
             $obj = json_decode($json, true);
-            $i=0;
-            echo $this->recordsPosition;
+            // $i=0;
+            // echo $this->recordsPosition;
             // exit;
             DB::connection()->disableQueryLog();
             $this->recursiveFunction($obj);
@@ -133,7 +133,7 @@ class JsonController extends Controller
         
         foreach ($array as $document) {
             if($counter != $this->recordsPosition){
-                echo $counter;
+                // echo $counter;
                 $counter++;
                 $this->recursiveFunction($document,$counter);
             } else {

@@ -90,9 +90,7 @@ class WebServiceUpdater extends Controller
     }
 
     public function UpdateByIdAsync($id){
-        print_r($id);
-        $tes = $this->dispatch(new UpdateData($id));
-        print_r($tes);
+        shell_exec("php ../artisan update:dataset $id > /dev/null 2>/dev/null &");
     }
 
     public function updateLocal(){

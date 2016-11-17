@@ -23,7 +23,7 @@
     <!-- <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/> -->
     <!-- Datepicker -->
     <!-- <link href="css/datepicker/bootstrap-datepicker.min.css" rel="stylesheet"/> -->
-    <link href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet"/>
+    <!-- <link href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet"/> -->
 
     <!-- Custom Theme Style -->
     <!-- <link href="../build/css/custom.min.css" rel="stylesheet"> -->
@@ -37,6 +37,12 @@
     <?php echo Html::style('vendors/iCheck/skins/flat/green.css');; ?>
 
     <?php echo Html::style('css/datepicker/bootstrap-datepicker.min.css');; ?>
+
+    <?php echo Html::style('vendors/pnotify/dist/pnotify.css');; ?>
+
+    <?php echo Html::style('vendors/pnotify/dist/pnotify.buttons.css');; ?>
+
+    <?php echo Html::style('vendors/pnotify/dist/pnotify.nonblock.css');; ?>
 
     <?php echo Html::style('build/css/custom.min.css');; ?>
 
@@ -56,6 +62,12 @@
     <?php echo Html::script('vendors/fastclick/lib/fastclick.js');; ?>
 
     <?php echo Html::script('vendors/nprogress/nprogress.js');; ?>
+
+    <?php echo Html::script('vendors/pnotify/dist/pnotify.js');; ?>
+
+    <?php echo Html::script('vendors/pnotify/dist/pnotify.buttons.js');; ?>
+
+    <?php echo Html::script('vendors/pnotify/dist/pnotify.nonblock.js');; ?>
 
     <?php echo Html::script('js/sweetalert.js');; ?>
 
@@ -114,7 +126,7 @@
                   <li><a href="/rml"><i class="fa fa-cloud"></i> API Services</a></li>
                   <?php if(Auth::user()->jenis == 0): ?>
                   <li><a href="<?php echo e(URL::to('user')); ?>"><i class="fa fa-users"></i> Manajemen Pengguna</a></li>
-                  <!-- <li><a href="<?php echo e(URL::to('user')); ?>"><i class="fa fa-users"></i> Manajemen Content</a></li> -->
+                  <!-- <li><a href="<?php echo e(URL::to('user')); ?>"><i class="fa fa-users"></i> Manajemen Content-Type</a></li> -->
                   <?php endif; ?>
                 </ul>
               </div>

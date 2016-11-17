@@ -174,13 +174,18 @@ class RMLController extends Controller
         return Datatables::of($records)
         ->addColumn('action', function ($row) {
             $button = "<div class='btn-group-vertical'>
-                                <a type='button' class='btn btn-primary btn-xs' href='/rml/edit/".$row->_id."'>Edit</a>";
-                                // <button type='button' class='btn btn-warning btn-xs'>Perbaharui</button>";
+                                <a type='button' class='btn btn-primary btn-xs' href='/rml/edit/".$row->_id."'>Edit</a>
+                                <button type='button' class='btn btn-warning btn-xs btn-update' value='".$row->_id."' id='update-".$row->_id."'>Perbaharui</button>";
             // if($row->aktif==null){
             //     $button = $button."<button type='button' class='btn btn-success btn-xs'>aktifkan</button>";
             // } elseif ($row->aktif=='on') {
             //      $button = $button."<button type='button' class='btn btn-danger btn-xs'>non-aktifkan</button>";
             // }
+            $button = $button.'<div class="progress" style="display:none"  id="progress-'.$row->_id.'">
+                                <div class="progress-bar progress-bar-striped progress-bar-info active" role="progressbar" style="width:100%">memproses
+                                </div>
+                              </div>
+                              </div>';
             return $button;
         })   
         ->editColumn('aktif', function($row){
@@ -191,6 +196,23 @@ class RMLController extends Controller
             } else {
                 return '<span class="label label-default">unknown</span>';
             }
+        })
+        ->editColumn('last_update', function($row){
+            if(isset($row->last_update)){
+                return $row->last_update;
+            } else{
+                return '<span class="label label-danger">Belum diperbaharui</span>';
+            }
+        })->editColumn('link', function($row){
+            
+                return '<a class="btn btn-info btn-xs" href="'.$row->link.'" target="_blank" data-toggle="tooltip" data-placement="top" title="'.$row->link.'">Link API</a>';
+            
+        })->editColumn('deskripsi', function($row){
+            
+                return '<button type="button" class="btn btn-info btn-xs" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="top" data-content="'.$row->deskripsi.'">
+                          Lihat
+                        </button>';
+            
         })
         ->make(true);
     }

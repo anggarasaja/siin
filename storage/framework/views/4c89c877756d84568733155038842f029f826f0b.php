@@ -1,4 +1,8 @@
  
+ <?php $__env->startPush('styles'); ?>
+ <?php echo Html::style('vendors/datatables/datatables.min.css');; ?>
+
+ <?php $__env->stopPush(); ?>
 <?php $__env->startSection('content'); ?>
     <div class="col-md-12">
 
@@ -17,6 +21,8 @@
                     <th>Jenis</th>
                     <th>Link</th>
                     <th>status</th>
+                    <th>Terakhir<br>diperbaharui</th>
+
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -27,10 +33,12 @@
     
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('scripts'); ?>
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<?php echo Html::script('vendors/datatables/datatables.min.js');; ?>
+
 <script>
 $(function() {
-    $('#rml-table').DataTable({
+
+    var rmlTable = $('#rml-table').DataTable({
         processing: true,
         serverSide: true,
         ajax: '/datatables/getRml',
@@ -41,10 +49,36 @@ $(function() {
             { data: 'jenis', name: 'jenis' },
             { data: 'link', name: 'link' },
             { data: 'aktif', name: 'aktif' },
+            { data: 'last_update', name: 'last_update' },
             { data: 'action', name: 'action'}
         ],
 
     });
+    $('#rml-table').on( 'draw.dt', function () {
+        $('[data-toggle="popover"]').popover();
+
+        $( ".btn-update" ).click(function() {
+             // alert( $(this).val() );
+             var id = $(this).val();
+             $("#progress-"+id).show();
+             $.ajax({
+                url: '/updater/updateId/'+id,
+                error: function() {
+                    alertl('<p>An error has occurred</p>');
+                }
+            }).done(function(data){
+
+                $("#progress-"+id).hide();
+                new PNotify({
+                        title: 'Pembaharuan selesai',
+                        text: 'Pembaharuan dataset telah selesai',
+                        type: 'success',
+                        styling: 'bootstrap3'
+                    });
+                rmlTable.ajax.reload( null, false );
+            });
+        });
+    } );
 });
 </script>
 <?php $__env->stopPush(); ?>

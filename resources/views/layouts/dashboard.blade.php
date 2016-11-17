@@ -23,7 +23,7 @@
     <!-- <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/> -->
     <!-- Datepicker -->
     <!-- <link href="css/datepicker/bootstrap-datepicker.min.css" rel="stylesheet"/> -->
-    <link href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet"/>
+    <!-- <link href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet"/> -->
 
     <!-- Custom Theme Style -->
     <!-- <link href="../build/css/custom.min.css" rel="stylesheet"> -->
@@ -33,6 +33,9 @@
     {!! Html::style('vendors/nprogress/nprogress.css'); !!}
     {!! Html::style('vendors/iCheck/skins/flat/green.css'); !!}
     {!! Html::style('css/datepicker/bootstrap-datepicker.min.css'); !!}
+    {!! Html::style('vendors/pnotify/dist/pnotify.css'); !!}
+    {!! Html::style('vendors/pnotify/dist/pnotify.buttons.css'); !!}
+    {!! Html::style('vendors/pnotify/dist/pnotify.nonblock.css'); !!}
     {!! Html::style('build/css/custom.min.css'); !!}
     {!! Html::style('css/sweetalert.css'); !!}
 
@@ -44,6 +47,9 @@
     {!! Html::script('vendors/bootstrap/dist/js/bootstrap.min.js'); !!}
     {!! Html::script('vendors/fastclick/lib/fastclick.js'); !!}
     {!! Html::script('vendors/nprogress/nprogress.js'); !!}
+    {!! Html::script('vendors/pnotify/dist/pnotify.js'); !!}
+    {!! Html::script('vendors/pnotify/dist/pnotify.buttons.js'); !!}
+    {!! Html::script('vendors/pnotify/dist/pnotify.nonblock.js'); !!}
     {!! Html::script('js/sweetalert.js'); !!}
     
     
@@ -100,7 +106,7 @@
                   <li><a href="/rml"><i class="fa fa-cloud"></i> API Services</a></li>
                   @if (Auth::user()->jenis == 0)
                   <li><a href="{{ URL::to('user') }}"><i class="fa fa-users"></i> Manajemen Pengguna</a></li>
-                  <!-- <li><a href="{{ URL::to('user') }}"><i class="fa fa-users"></i> Manajemen Content</a></li> -->
+                  <!-- <li><a href="{{ URL::to('user') }}"><i class="fa fa-users"></i> Manajemen Content-Type</a></li> -->
                   @endif
                 </ul>
               </div>
