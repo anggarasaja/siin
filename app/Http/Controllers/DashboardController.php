@@ -132,7 +132,7 @@ class DashboardController extends Controller
             return $collection->aggregate([
                         ['$group' => 
                             [
-                                '_id'=>'$trl',
+                                '_id'=>'$data.trl',
                                 'count'=>
                                     [
                                         '$sum'=>1
@@ -161,7 +161,7 @@ class DashboardController extends Controller
             return $collection->aggregate([
                         ['$group' => 
                             [
-                                '_id'=>'$'.$groupByData,
+                                '_id'=>'$data.'.$groupByData,
                                 'count'=>
                                     [
                                         '$sum'=>1
