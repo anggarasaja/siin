@@ -141,14 +141,14 @@
             </nav><!-- /.menu-list -->
           </div>
 
-          <div class="col-sm-5">
+          <!-- <div class="col-sm-5">
             <div class="menu-search pull-right">
              <form role="search" class="search-form" action="#" method="get">
               <input class="search-field" type="text" name="s" id="s" placeholder="Search Here" required>
               <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
-            </form><!-- /.search-form -->
-          </div><!-- /.menu-search -->
-        </div>
+            </form>
+          </div>
+        </div> -->
       </div><!-- /.row -->
     </div><!-- /.container -->
   </header><!-- /#main-menu -->

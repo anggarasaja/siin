@@ -23,7 +23,7 @@
    <!-- Wrapper for slides -->
    <div class="carousel-inner" role="listbox">
     <div class="item item-1 active">
-      <img src="{{URL::asset('img/slider/1.png')}}">
+      <img src="{{URL::asset('img/slider/1.jpg')}}">
       <div class="carousel-caption">
         <div class="slider-icon">
          <i class="fa fa-desktop"></i>
@@ -33,7 +33,7 @@
    </div>
 
    <div class="item item-2">
-    <img src="{{URL::asset('img/slider/2.png')}}">
+    <img src="{{URL::asset('img/slider/2.jpg')}}">
     <div class="carousel-caption">  
         <div class="slider-icon">
          <i class="fa fa-desktop"></i>

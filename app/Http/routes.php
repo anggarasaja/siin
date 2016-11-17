@@ -64,7 +64,12 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 
 
-    Route::resource('user','userController');
+   
+
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
+     Route::resource('user','userController');
     Route::get('getUser','userController@getUser');
     Route::get('userProfile','userController@userProfile');
 

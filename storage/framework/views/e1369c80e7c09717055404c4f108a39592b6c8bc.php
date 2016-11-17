@@ -101,7 +101,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="" class="site_title"><img src="<?php echo e(URL::asset('images/iconwhite.png')); ?>" style="width:42px;margin-top:-6px;margin-left:3px">&nbsp;&nbsp;<span>RISTEKDIKTI</span>
+              <a href="/" class="site_title"><img src="<?php echo e(URL::asset('images/iconwhite.png')); ?>" style="width:42px;margin-top:-6px;margin-left:3px">&nbsp;&nbsp;<span>RISTEKDIKTI</span>
               </a>
             </div>
             <div class="clearfix">
@@ -112,7 +112,10 @@
                 <ul class="nav side-menu">
                   <li><a href="/dashboard"><i class="fa fa-bar-chart-o"></i> Visualisasi Data</span></a></li>
                   <li><a href="/rml"><i class="fa fa-cloud"></i> API Services</a></li>
+                  <?php if(Auth::user()->jenis == 0): ?>
                   <li><a href="<?php echo e(URL::to('user')); ?>"><i class="fa fa-users"></i> Manajemen Pengguna</a></li>
+                  <!-- <li><a href="<?php echo e(URL::to('user')); ?>"><i class="fa fa-users"></i> Manajemen Content</a></li> -->
+                  <?php endif; ?>
                 </ul>
               </div>
             </div> 
