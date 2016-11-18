@@ -46,15 +46,29 @@
                   <div class="table-responsive">
                     
                     <table class="table">
-                    <?php if(isset($result->data)): ?>
-                      <?php 
-                        $arrayRs = $result->data;
-                       ?>
-                    <?php else: ?>
-                      <?php 
-                        $arrayRs = $result->metadata
-                       ?>
+                    <?php if(is_object($result)): ?>
+                      <?php if(isset($result->data)): ?>
+                        <?php 
+                          $arrayRs = $result->data;
+                         ?>
+                      <?php elseif(isset($result->metadata)): ?>
+                        <?php 
+                          $arrayRs = $result->metadata;
+                         ?>
+                      <?php endif; ?>
+                    <?php elseif(is_array($result)): ?>
+                      <?php if(isset($result['data'])): ?>
+                        <?php 
+                          $arrayRs = $result['data'];
+                         ?>
+                      <?php elseif(isset($result['metadata'])): ?>
+                        <?php 
+                          $arrayRs = $result['metadata'];
+                         ?>
+                      <?php endif; ?>
                     <?php endif; ?>
+                    
+
                     <?php foreach($arrayRs as $key => $value): ?>
                     <tr>
                       <td>
@@ -65,7 +79,7 @@
                         :
                       </td>
                       <td>
-                        <?php if(is_object($value)): ?>
+                        <?php if(is_object($value) or is_array($value)): ?>
                           <?php foreach($value as $key2 => $value2): ?>
                           <ul>
                             <li>

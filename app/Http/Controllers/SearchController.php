@@ -129,28 +129,5 @@ class SearchController extends Controller
         //
     }
 
-    public function doSearch(){
-        $key = Input::get('key',false);
-        $id_service = Input::get('id_service',false);
-
-        $rml = new RMLController;
-        $service = $rml->getId($id_service);
-        // print_r($key);
-        // exit;
-        $fields = $service[0]->fields;  
-        // print_r($fields);
-
-        $query = DB::collection($service[0]->nama_collection);//->where('data.id','regexp', '/.*kelautan/i');
-        foreach ($fields as $value) {
-            // echo 'data.'.$value;
-
-            $query = $query->orWhere('data.'.$value,'regexp', '/.*'.$key.'/i');
-            // break;
-        }
-
-        $result = $query->paginate(5)->appends(['key' => $key,'id_service'=>$id_service]);
-        return $result;
-        // return Datatables::of(collect($result))
-        // ->make(true);
-    }
+ 
 }

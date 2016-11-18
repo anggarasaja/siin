@@ -46,15 +46,29 @@
                   <div class="table-responsive">
                     
                     <table class="table">
-                    @if(isset($result->data))
-                      @php
-                        $arrayRs = $result->data;
-                      @endphp
-                    @else
-                      @php
-                        $arrayRs = $result->metadata
-                      @endphp
+                    @if(is_object($result))
+                      @if(isset($result->data))
+                        @php
+                          $arrayRs = $result->data;
+                        @endphp
+                      @elseif (isset($result->metadata))
+                        @php
+                          $arrayRs = $result->metadata;
+                        @endphp
+                      @endif
+                    @elseif(is_array($result))
+                      @if(isset($result['data']))
+                        @php
+                          $arrayRs = $result['data'];
+                        @endphp
+                      @elseif (isset($result['metadata']))
+                        @php
+                          $arrayRs = $result['metadata'];
+                        @endphp
+                      @endif
                     @endif
+                    
+
                     @foreach($arrayRs as $key => $value)
                     <tr>
                       <td>
@@ -64,7 +78,7 @@
                         :
                       </td>
                       <td>
-                        @if(is_object($value))
+                        @if(is_object($value) or is_array($value))
                           @foreach($value as $key2 => $value2)
                           <ul>
                             <li>

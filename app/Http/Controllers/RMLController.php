@@ -145,6 +145,11 @@ class RMLController extends Controller
         // print_r($result);
         return $result;
     }
+    public function getIdFields($id){
+        $result = RMLModel::where('_id', '=', $id)->where('fields','exist',true)->get();
+        // print_r($result);
+        return $result;
+    }
     public function getActive(){
         $result = RMLModel::where('aktif', '=', 'on')->get();
 
