@@ -169,6 +169,33 @@ class RMLController extends Controller
         return $result;
     }
 
+    public function getServiceName(){
+        $collection = "rml";
+        $groupByData = "nama_service";
+        $array = array();
+        $records = DB::collection($collection)->raw(function($collection) use ($groupByData){
+            return $collection->aggregate([
+                        ['$group' => 
+                            [
+                                '_id'=>'$'.$groupByData,
+                                'id'=>
+                                    [
+                                        '$push'=>'$_id'
+                                    ],
+                                'penyedia'=>
+                                    [
+                                        '$push'=>'$penyedia'
+                                    ],
+                            ]
+                        ]
+                    ]);
+        });
+        foreach ($records as $record) {
+            array_push($array, ['nama_service'=>$record->_id,'id'=>(string)$record->id[0],'penyedia'=>$record->penyedia[0]]);
+        }
+        return $array;
+    }
+
     public function getAllDt(){
         $records= RMLModel::get();
         return Datatables::of($records)

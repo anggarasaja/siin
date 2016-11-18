@@ -10,6 +10,7 @@ use Illuminate\Console\Command;
 
 class Updater extends Command
 {
+    protected $fields = array();
     /**
      * The name and signature of the console command.
      *
@@ -47,22 +48,23 @@ class Updater extends Command
         // exit;
         // print_r($this->id);
         $RML = new RMLController;
-        $documents = $RML->getId($id);
+        $document = $RML->getId($id);
         
-        if($documents->count()==0){
+        if($document->count()==0){
             $this->info("Web Service tidak ditemukan");
             exit;
         }
         DB::collection('rml')->where('_id', $id)
                        ->update(['last_update'=>'Sedang Memperharui Data'], ['upsert' => true]);
-        foreach ($documents as $document) {
-            switch ($document->jenis) {
+        
+            switch ($document[0]->jenis) {
                 case 'oai':
-                    $this->getOai($document);
+                    $this->getOai($document[0]);
                     // echo "oai";
                     break;
                 case "json":
-                   $this->getJson($document);
+                   $this->getJson($document[0]);
+
                     // echo "json";
                     break;
                 case "xml":
@@ -73,10 +75,12 @@ class Updater extends Command
                     break;
             }
         
-        }
+        
+        $this->info($document[0]->nama_collection);
+        $this->updateFields($document[0]);
 
         DB::collection('rml')->where('_id', $id)
-                       ->update(['last_update'=>date("Y-m-d H:i:s")], ['upsert' => true]);
+                       ->update(['last_update'=>date("Y-m-d H:i:s"),'fields'=>$this->fields], ['upsert' => true]);
 
         $this->info("finish");
     }
@@ -88,5 +92,46 @@ class Updater extends Command
     public function getJson($document){
         $jsonController = new JsonController($document->nama_collection,$document->link,$document->posisi_record);
         $jsonController->getRecords();
+    }
+
+    public function updateFields($document){
+        $result = DB::collection($document->nama_collection)->raw()->findOne();
+        switch ($document->jenis) {
+            case 'oai':
+                $this->findFields((array)$result->metadata);
+                // echo "oai";
+                break;
+            case "json":
+               $this->findFields((array)$result->data);
+                // echo "json";
+                break;
+            case "xml":
+                // echo "xml";
+                break;
+            default:
+                // echo "kosong";
+                break;
+        }
+
+
+    }
+
+    public function findFields(array $array, $prevPrefix=""){
+        if($prevPrefix==""){
+            $dot="";
+        } else {
+            $dot=".";
+        }
+        foreach ($array as $key => $value) {
+            if(is_array($value)){
+                
+                $this->findFields($value,$prevPrefix.$dot.$key);
+            } elseif (is_object($value)){
+                // $prevPrefix=$prevPrefix.'.'.$key;
+                $this->findFields((array)$value,$prevPrefix.$dot.$key);
+            } else {
+                array_push($this->fields,$prevPrefix.$dot.$key);
+            }
+        }
     }
 }

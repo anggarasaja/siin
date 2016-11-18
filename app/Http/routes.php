@@ -32,6 +32,7 @@ Route::get('/oai/list', 'OaiController@getAvailableMetadataFormats');
 Route::get('/oai/records', 'OaiController@getRecords');
 
 Route::get('/rml/get-active/', 'RMLController@getActive');
+Route::get('/rml/get-service-name/', 'RMLController@getServiceName');
 Route::get('/rml/get-active-count/', 'RMLController@getActiveCount');
 Route::post('/rml/submit', 'RMLController@store');
 
@@ -51,6 +52,9 @@ Route::get('/chart/getBentukLembaga', 'DashboardController@getBentukLembaga');
 Route::get('/chart/getLembagaInduk', 'DashboardController@getLembagaInduk');
 Route::get('/chart/getFokusBidang', 'DashboardController@getFokusBidang');
 Route::get('/chart/getTrl', 'DashboardController@getTrl');
+Route::get('/search', 'SearchController@index');
+Route::get('/search/submit', 'SearchController@doSearch');
+
     
 Route::group(['middleware' => ['web', 'auth']], function () {
 	Route::get('/dashboard','DashboardController@frontpage');

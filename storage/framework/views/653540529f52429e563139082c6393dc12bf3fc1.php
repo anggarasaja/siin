@@ -130,6 +130,7 @@
                 <li><a href="/register">Register</a></li>
                 <?php else: ?>
                 <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/search">Pencarian</a></li>
                 <li><a href="<?php echo e(url('/logout')); ?>">Logout</a></li>
                 
                 <?php endif; ?>

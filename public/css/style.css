@@ -731,7 +731,6 @@ h1,h2,h3,h4,h5,h6 {
 .message-details {
 	padding: 60px 0px;
 }
-.message-details input,
 .subscribe-section input {
 	padding: 21px 20px !important;
 }
@@ -741,10 +740,26 @@ h1,h2,h3,h4,h5,h6 {
 	border-radius: 2px;
 	box-shadow: none;
 	font-size: .875em;
-	padding: 20px;
+	/*padding: 20px;*/
 	margin-bottom: 15px;
 }
-.message-details .btn,
+.message-details .btn 
+{
+	background-color: #3498db;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	color: #ffffff;
+	font-size: .875em;
+	font-weight: 800;
+	width: 100%;
+	text-transform: uppercase;
+
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
+}
 .subscribe-section .btn {
 	background-color: #3498db;
 	border: 1px solid transparent;
