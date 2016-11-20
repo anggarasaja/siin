@@ -1,3 +1,7 @@
+<?php $__env->startPush('styles'); ?>
+ <?php echo Html::style('vendors/datatables/DataTables-1.10.12/css/jquery.dataTables.min.css');; ?>
+
+ <?php $__env->stopPush(); ?>
 <?php $__env->startSection('content'); ?>
         <!-- page content -->
           <div>
@@ -25,7 +29,7 @@
                         <div class="row">
                           <a class="btn btn-primary" href="/user/create" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Pengguna</a>
                       </div>
-                        <table id="users-table" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <table id="users-table" class="table table-striped dt-responsive nowrap" cellspacing="0" width="100%">
                           <thead>
                             <tr>
                               <!-- <th>ID</th> -->
@@ -51,7 +55,8 @@
 
         <?php echo Html::script('vendors/jquery-nice-select/js/jquery.nice-select.js');; ?>
 
-        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <?php echo Html::script('vendors/datatables/DataTables-1.10.12/js/jquery.dataTables.min.js');; ?>
+
         <script type="text/javascript">
 
           $(document).ready(function() {

@@ -180,9 +180,11 @@ class RMLController extends Controller
         $array = array();
         $records = DB::collection($collection)->raw(function($collection) use ($groupByData){
             return $collection->aggregate([
-                        ['$group' => 
-                            [
+                        [
+                        '$group' => 
+                            [   
                                 '_id'=>'$'.$groupByData,
+
                                 'id'=>
                                     [
                                         '$push'=>'$_id'
@@ -191,8 +193,17 @@ class RMLController extends Controller
                                     [
                                         '$push'=>'$penyedia'
                                     ],
-                            ]
-                        ]
+                            ],
+                        ],
+                        // [
+                        // '$match' => 
+                        //     [
+                        //         'fields' =>
+                        //         [
+                        //             'exist' => true
+                        //         ]
+                        //     ]
+                        // ]
                     ]);
         });
         foreach ($records as $record) {

@@ -1,6 +1,6 @@
  @extends('layouts.dashboard')
  @push('styles')
- {!! Html::style('vendors/datatables/datatables.min.css'); !!}
+ {!! Html::style('vendors/datatables/DataTables-1.10.12/css/jquery.dataTables.min.css'); !!}
  @endpush
 @section('content')
     <div class="col-md-12">
@@ -32,7 +32,7 @@
     
 @stop
 @push('scripts')
-{!! Html::script('vendors/datatables/datatables.min.js'); !!}
+{!! Html::script('vendors/datatables/DataTables-1.10.12/js/jquery.dataTables.min.js'); !!}
 <script>
 $(function() {
 

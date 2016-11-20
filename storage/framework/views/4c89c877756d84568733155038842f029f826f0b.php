@@ -1,6 +1,6 @@
  
  <?php $__env->startPush('styles'); ?>
- <?php echo Html::style('vendors/datatables/datatables.min.css');; ?>
+ <?php echo Html::style('vendors/datatables/DataTables-1.10.12/css/jquery.dataTables.min.css');; ?>
 
  <?php $__env->stopPush(); ?>
 <?php $__env->startSection('content'); ?>
@@ -33,7 +33,7 @@
     
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('scripts'); ?>
-<?php echo Html::script('vendors/datatables/datatables.min.js');; ?>
+<?php echo Html::script('vendors/datatables/DataTables-1.10.12/js/jquery.dataTables.min.js');; ?>
 
 <script>
 $(function() {
