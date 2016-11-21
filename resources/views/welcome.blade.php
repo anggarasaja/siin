@@ -88,7 +88,7 @@
                 <div class="item">
                   <article class="post type-post">
                     <div class="post-content">
-                      <h2 class="entry-title"><a href="blog-single.html">Unit LitBang berdasarkan Bentuk Kelembagaan</a></h2> 
+                      <h2 class="entry-title">Unit LitBang berdasarkan Bentuk Kelembagaan</h2> 
                         <canvas id="bentukLembaga"></canvas>
                     </div><!-- /.post-content -->
                   </article>
@@ -103,24 +103,67 @@
                 <div class="item">
                   <article class="post type-post">
                     <div class="post-content">
-                      <h2 class="entry-title"><a href="blog-single.html">Produk berdasarkan TRL</a></h2> 
+                      <h2 class="entry-title">Produk berdasarkan TRL</h2> 
                         <canvas id="pieChart"></canvas>
                     </div><!-- /.post-content -->
                   </article>
                 </div><!-- /.item -->
               </div>
-          
-              <div class="col-sm-6">
-                <div class="item">
-                  <article class="post type-post">
-                    <div class="post-content">
-                      <h2 class="entry-title"><a href="blog-single.html">Unit LitBang berdasarkan Fokus Bidang</a></h2> 
-                        <canvas id="fokusBidang"></canvas>
-                    </div><!-- /.post-content -->
-                  </article>
-                </div><!-- /.item -->
-              </div>
+            <div class="col-sm-6">
+              <div class="item">
+                <article class="post type-post">
+                  <div class="post-content">
+                    <h2 class="entry-title">Unit LitBang berdasarkan Fokus Bidang</h2> 
+                      <canvas id="piePUI"></canvas>
+                  </div>
+                </article>
+              </div><!-- /.item -->
+            </div>
+
+              
           </div>
+          <div class="row">
+                
+            <div class="col-sm-12">
+              <div class="item">
+                <article class="post type-post">
+                  <div class="post-content">
+                    <h2 class="entry-title">Unit LitBang berdasarkan Fokus Bidang</h2> 
+                      <canvas id="fokusBidang"></canvas>
+                  </div><!-- /.post-content -->
+                </article>
+              </div><!-- /.item -->
+            </div>
+                      
+          </div>
+      </div><!-- /.latest-posts -->
+    </div><!-- /.row -->
+  </div><!-- /.post-area -->
+</div><!-- /.container -->
+</section><!-- /#latest-post -->  
+</section><!-- /#main-slider -->
+
+<section id="latest-post" class="latest-post">
+  <div class="container">
+    <div class="post-area">
+      <div class="post-area-top text-center">
+        <h2 class="post-area-title">PDII - LIPI</h2>
+        <!-- <p class="title-description">Vestibulum auctor dapibus nequ</p> -->
+      </div><!-- /.post-area-top -->
+
+      <div class="row">
+        <div class="latest-posts">
+          <div class="col-sm-12">
+            <div class="item">
+              <article class="post type-post">
+                <div class="post-content">
+                  <h2 class="entry-title">Artikel Ilmiah Berdasarkan Bidang Penelitian</h2> 
+                    <canvas id="pieBidang"></canvas>
+                </div><!-- /.post-content -->
+              </article>
+            </div><!-- /.item -->
+          </div>
+ 
       </div><!-- /.latest-posts -->
     </div><!-- /.row -->
   </div><!-- /.post-area -->
@@ -130,7 +173,48 @@
 @push('scripts')
 <script type="text/javascript">
  $(document).ready(function() {
-    
+    $.ajax({
+      url: "/chart/getBidPel",
+      method: "GET",
+      success: function(data) {
+        result = jQuery.parseJSON(data);
+        var ctx = document.getElementById("pieBidang");
+        var data = {
+          datasets: [{
+            data: result.persentage,
+            backgroundColor: result.color,
+            label: 'PUI' // for legend
+          }],
+          labels: result.name
+        };
+        var pieChart = new Chart(ctx, {
+          data: data,
+          type: 'pie',
+          otpions: {
+            legend: false,
+            responsive: true,
+            // tooltips: {
+            //   callbacks: {
+            //     label: function(tooltipItem, data) {
+            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
+            //       var tooltipLabel = data.labels[tooltipItem.index];
+            //       var tooltipData = allData[tooltipItem.index];
+            //       var total = 0;
+            //       for (var i in allData) {
+            //         total += allData[i];
+            //       }
+            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
+            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+            //     }
+            //   }
+            // }
+          }
+        });
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    });
     $.ajax({
       url: "/chart/getBentukLembaga",
       method: "GET",
@@ -143,7 +227,7 @@
             labels: result.label,
             datasets: [{
               label: 'Bentuk Lembaga',
-              backgroundColor: "#26B99A",
+              backgroundColor: "#107FC9",
               data: result.data
             }]
           },
@@ -181,7 +265,7 @@
             labels: result.label,
             datasets: [{
               label: 'Fokus Bidang',
-              backgroundColor: "#26B99A",
+              backgroundColor: "#107FC9",
               data: result.data
             }]
           },
@@ -220,7 +304,7 @@
             labels: result.label,
             datasets: [{
               label: 'Lembaga Induk',
-              backgroundColor: "#26B99A",
+              backgroundColor: "#107FC9",
               data: result.data
             }]
           },
@@ -260,7 +344,7 @@
             labels: result.label,
             datasets: [{
               label: 'Kategori Lembaga',
-              backgroundColor: "#26B99A",
+              backgroundColor: "#107FC9",
               data: result.data
             }]
           },
@@ -299,6 +383,92 @@
             data: result.persentage,
             backgroundColor: result.color,
             label: 'TRL' // for legend
+          }],
+          labels: result.name
+        };
+        var pieChart = new Chart(ctx, {
+          data: data,
+          type: 'pie',
+          otpions: {
+            legend: false,
+            responsive: true,
+            // tooltips: {
+            //   callbacks: {
+            //     label: function(tooltipItem, data) {
+            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
+            //       var tooltipLabel = data.labels[tooltipItem.index];
+            //       var tooltipData = allData[tooltipItem.index];
+            //       var total = 0;
+            //       for (var i in allData) {
+            //         total += allData[i];
+            //       }
+            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
+            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+            //     }
+            //   }
+            // }
+          }
+        });
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    });
+
+    $.ajax({
+      url: "/chart/getPUI",
+      method: "GET",
+      success: function(data) {
+        result = jQuery.parseJSON(data);
+        var ctx = document.getElementById("piePUI");
+        var data = {
+          datasets: [{
+            data: result.persentage,
+            backgroundColor: result.color,
+            label: 'PUI' // for legend
+          }],
+          labels: result.name
+        };
+        var pieChart = new Chart(ctx, {
+          data: data,
+          type: 'pie',
+          otpions: {
+            legend: false,
+            responsive: true,
+            // tooltips: {
+            //   callbacks: {
+            //     label: function(tooltipItem, data) {
+            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
+            //       var tooltipLabel = data.labels[tooltipItem.index];
+            //       var tooltipData = allData[tooltipItem.index];
+            //       var total = 0;
+            //       for (var i in allData) {
+            //         total += allData[i];
+            //       }
+            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
+            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+            //     }
+            //   }
+            // }
+          }
+        });
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    });
+
+    $.ajax({
+      url: "/chart/getBidPel",
+      method: "GET",
+      success: function(data) {
+        result = jQuery.parseJSON(data);
+        var ctx = document.getElementById("pieBidang");
+        var data = {
+          datasets: [{
+            data: result.persentage,
+            backgroundColor: result.color,
+            label: 'PUI' // for legend
           }],
           labels: result.name
         };

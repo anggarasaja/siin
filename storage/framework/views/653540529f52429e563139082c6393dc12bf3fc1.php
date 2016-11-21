@@ -14,11 +14,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
+  <link href="https://fonts.googleapis.com/css?family=Taviraj:500i" rel="stylesheet">
 	<!-- Bootstrap  -->
   <?php echo Html::style('css/bootstrap.min.css');; ?>
 
 	<!-- icon fonts font Awesome -->
   <?php echo Html::style('css/font-awesome.min.css');; ?>
+
+  <?php echo Html::style('vendors/Hover-master/css/hover-min.css');; ?>
 
 	<!-- Import Magnific Pop Up Styles -->
 
@@ -59,54 +62,28 @@
   					<div class="col-sm-8 pull-left">
   						<ul class="contact-list">
   							<li>
-  								<a class="site-name" href="#">
-  									<span class="top-icon"><i class="fa fa-link"></i></span>
-  									www.sitename.com
-  								</a>
-  							</li>
-  							<li>
-  								<a class="info" href="#">
-  									<span class="top-icon"><i class="fa fa-envelope"></i></span>
-  									info@sitename.com
-  								</a>
-  							</li>
-  							<li>
-  								<a class="phone-no" href="#">
-  									<span class="top-icon"><i class="fa fa-phone"></i></span>
-  									8888 888888
+  								<a class="site-name" href="/">
+  									<img src="<?php echo e(URL::asset('img/Logo_SIIN_white.png')); ?>" alt="Site Logo" style="max-width: 60px">
+  									<span style="    position: absolute;bottom: -6px;left: 90px;">Sistem Informasi IPTEK Nasional</span>
   								</a>
   							</li>
   						</ul>
   					</div>
+            <div class="col-sm-4 pull-right">
+              <div class="top-social">
+                <ul>
+                  <li>
+                    <a href="http://www.dikti.go.id/"><img src="<?php echo e(URL::asset('img/kemenristekdikti_white.png')); ?>" alt="Site Logo" style="max-width: 50px"></a>
+                  </li>
+                 
+                </ul>
+              </div>
+            </div>
 
-  					<div class="col-sm-4 pull-right">
-  						<div class="top-social">
-  							<ul>
-  								<li>
-  									<a href="#" class="top-icon fa fa-facebook"></a>
-  								</li>
-  								<li>
-  									<a href="#" class="top-icon fa fa-twitter"></a>
-  								</li>
-  								<li>
-  									<a href="#" class="top-icon fa fa-linkedin"></a>
-  								</li>
-  							</ul>
-  						</div>
-  					</div>
+
   				</div><!-- /.row -->
   			</div><!-- /.container -->
   		</section><!-- /#top-contact -->
-
-
-
-  		<section id="site-banner" class="site-banner text-center">
-  			<div class="container">
-  				<div class="site-logo">
-  					<a href="./"><img src="<?php echo e(URL::asset('img/Logo_SIIN_small.png')); ?>" alt="Site Logo"></a>
-  				</div><!-- /.site-logo -->
-  			</div><!-- /.container -->
-  		</section><!-- /#site-banner -->
 
 
 
@@ -124,14 +101,14 @@
               </div>
               <nav id="menu" class="menu collapse navbar-collapse">
                <ul id="headernavigation" class="menu-list nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/" class="hvr-underline-from-center">Home</a></li>
+                <li><a href="/search" class="hvr-underline-from-center">Pencarian</a></li>
                 <?php if(Auth::guest()): ?>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
+                <li><a href="/login" class="hvr-underline-from-center">Login</a></li>
+                <li><a href="/register" class="hvr-underline-from-center">Register</a></li>
                 <?php else: ?>
-                <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href="/search">Pencarian</a></li>
-                <li><a href="<?php echo e(url('/logout')); ?>">Logout</a></li>
+                <li><a href="/dashboard" class="hvr-underline-from-center">Dashboard</a></li>
+                <li><a href="<?php echo e(url('/logout')); ?>" class="hvr-underline-from-center">Logout</a></li>
                 
                 <?php endif; ?>
                 <!--<li><a href="#portfolio">Projects</a></li>

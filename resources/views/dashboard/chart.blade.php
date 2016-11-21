@@ -223,6 +223,90 @@
         console.log(data);
       }
     });
+    $.ajax({
+      url: "/chart/getPUI",
+      method: "GET",
+      success: function(data) {
+        result = jQuery.parseJSON(data);
+        var ctx = document.getElementById("piePUI");
+        var data = {
+          datasets: [{
+            data: result.persentage,
+            backgroundColor: result.color,
+            label: 'PUI' // for legend
+          }],
+          labels: result.name
+        };
+        var pieChart = new Chart(ctx, {
+          data: data,
+          type: 'pie',
+          otpions: {
+            legend: false,
+            responsive: true,
+            // tooltips: {
+            //   callbacks: {
+            //     label: function(tooltipItem, data) {
+            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
+            //       var tooltipLabel = data.labels[tooltipItem.index];
+            //       var tooltipData = allData[tooltipItem.index];
+            //       var total = 0;
+            //       for (var i in allData) {
+            //         total += allData[i];
+            //       }
+            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
+            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+            //     }
+            //   }
+            // }
+          }
+        });
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    });
+    $.ajax({
+      url: "/chart/getBidPel",
+      method: "GET",
+      success: function(data) {
+        result = jQuery.parseJSON(data);
+        var ctx = document.getElementById("pieBidang");
+        var data = {
+          datasets: [{
+            data: result.persentage,
+            backgroundColor: result.color,
+            label: 'PUI' // for legend
+          }],
+          labels: result.name
+        };
+        var pieChart = new Chart(ctx, {
+          data: data,
+          type: 'pie',
+          otpions: {
+            legend: false,
+            responsive: true,
+            // tooltips: {
+            //   callbacks: {
+            //     label: function(tooltipItem, data) {
+            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
+            //       var tooltipLabel = data.labels[tooltipItem.index];
+            //       var tooltipData = allData[tooltipItem.index];
+            //       var total = 0;
+            //       for (var i in allData) {
+            //         total += allData[i];
+            //       }
+            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
+            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+            //     }
+            //   }
+            // }
+          }
+        });
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    });
   });
   //     // Bar chart
   // Chart.defaults.global.legend = {
@@ -276,7 +360,7 @@
     <div class="col-md-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Visualisasi Data Lembaga</h2>
+          <h2>Pusat Unggulan IPTEK</h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -319,6 +403,16 @@
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="x_title">
+              <h2>Lembaga Yang ditetapkan sebagai PUI</h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <canvas id="piePUI"></canvas>
+              <!-- <div id="js-legend" class="chart-legend"></div> -->
+            </div>
+          </div>    
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="x_title">
               <h2>Unit LitBang berdasarkan Fokus Bidang</h2>
               <div class="clearfix"></div>
             </div>
@@ -332,5 +426,29 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>PDII - LIPI</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="x_title">
+              <h2>Artikel Ilmiah Berdasarkan Bidang Penelitian</h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <canvas id="pieBidang"></canvas>
+            </div>`
+          </div>  
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 @endsection

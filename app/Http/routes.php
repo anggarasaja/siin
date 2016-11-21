@@ -48,11 +48,19 @@ Route::get('/updater/update/{type}', 'WebServiceUpdater@updateByType');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+//PUI
 Route::get('/chart/getKategoriLembaga', 'DashboardController@getKategoriLembaga');
 Route::get('/chart/getBentukLembaga', 'DashboardController@getBentukLembaga');
 Route::get('/chart/getLembagaInduk', 'DashboardController@getLembagaInduk');
 Route::get('/chart/getFokusBidang', 'DashboardController@getFokusBidang');
 Route::get('/chart/getTrl', 'DashboardController@getTrl');
+Route::get('/chart/getPUI', 'DashboardController@getPUI');
+//PDII-LIPI
+Route::get('/chart/getBidPel', 'DashboardController@getBidangPenelitian');
+Route::get('/chart/getLitbang', 'DashboardController@getLitbang');
+
+
 Route::get('/search', 'SearchController@index');
 Route::get('/search/submit', 'SearchController@doSearch');
 

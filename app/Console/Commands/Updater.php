@@ -25,6 +25,8 @@ class Updater extends Command
      */
     protected $description = 'Command description';
 
+    protected $update_version ;
+
     /**
      * Create a new command instance.
      *
@@ -49,13 +51,19 @@ class Updater extends Command
         // print_r($this->id);
         $RML = new RMLController;
         $document = $RML->getId($id);
+
         
         if($document->count()==0){
             $this->info("Web Service tidak ditemukan");
             exit;
         }
+        if(isset($document[0]->update_version)){
+            $this->update_version = $document[0]->update_version + 1;
+        } else {
+            $this->update_version = 1;
+        }
         DB::collection('rml')->where('_id', $id)
-                       ->update(['last_update'=>'Sedang Memperharui Data'], ['upsert' => true]);
+                       ->update(['last_update'=>'Sedang Memperharui Data', 'update_version'=>$this->update_version], ['upsert' => true]);
         
             switch ($document[0]->jenis) {
                 case 'oai':
@@ -86,11 +94,13 @@ class Updater extends Command
     }
 
     public function getOai($document){
-        $oaiController = new OaiController($document->nama_collection,$document->link);
+
+        $oaiController = new OaiController($document->nama_collection,$this->update_version,$document->link);
         $oaiController->getRecords();
     }
     public function getJson($document){
-        $jsonController = new JsonController($document->nama_collection,$document->link,$document->posisi_record);
+         $this->info("proses");
+        $jsonController = new JsonController($document->nama_collection,$this->update_version,$document->link,$document->posisi_record);
         $jsonController->getRecords();
     }
 

@@ -18,10 +18,12 @@ class JsonController extends Controller
     private $collection;
     private $url;
     private $recordsPosition;
+    private $update_version;
 
-    public function __construct($collection,$url,$recordsPosition=0)
+    public function __construct($collection,$update_version,$url,$recordsPosition=0)
     {
         $this->url   = $url;
+        $this->update_version = $update_version;
         $this->collection = $collection;
         if($recordsPosition == null){
             $this->recordsPosition = 0;
@@ -140,6 +142,7 @@ class JsonController extends Controller
                 $model = new JsonModel;
                 $model->setTable($this->collection);
                 $model->data = $document;
+                $model->update_version = $this->update_version;
                 $model->save();
                 
                 

@@ -29,10 +29,15 @@ class OaiController extends Controller
      * @var Collection
      */
     private $collection;
+    /**
+     * @var update_version
+     */
+    private $update_version;
 
-    public function __construct($collection,$url)
+    public function __construct($collection,$update_version,$url)
     {
         $oaiUrl   = $url;
+        $this->update_version = $update_version;
         $client = new Client($oaiUrl);
         $this->endpoint = new Endpoint($client);
         $this->collection = $collection;
@@ -118,7 +123,7 @@ class OaiController extends Controller
                     $arrayMetadata[$key]=$value->__toString();
                 }
 
-                $model = new OaiModel(['header'=>$arrayNamespaces, 'metadata'=>$arrayMetadata]);
+                $model = new OaiModel(['header'=>$arrayNamespaces, 'metadata'=>$arrayMetadata,'update_version'=>$this->update_version]);
                 $model->setTable($this->collection);
                 $model->save();
                 $i++;

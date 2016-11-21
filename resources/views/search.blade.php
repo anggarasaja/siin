@@ -18,7 +18,7 @@
             <div class="col-md-3">
               <div class="form-group">
                 <select class="form-control" id="sel1" name="id_service" aria-required="true" required>
-                  <option>== Kategori Data ==</option>
+                  <option value="">== Kategori Data ==</option>
                   @foreach ($services as $service)
                       <option value="{{$service['id']}}">{{$service['nama_service']." (".$service['penyedia'].")"}}</option>
                   @endforeach

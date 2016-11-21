@@ -109,36 +109,61 @@ class DashboardController extends Controller
     }
 
     
-
+    //PUI
     public function getKategoriLembaga(){
-        return $this->barChart(env('PUI_LEMBAGA', 'PUI-produk-json'),"kategori_lembaga");
+        return $this->barChart(env('PUI_LEMBAGA', 'PUI-produk-json'),"kategori_lembaga",'data');
     }
     public function getBentukLembaga(){
-        return $this->barChart(env('PUI_LEMBAGA',"PUI-lembaga-json"),"bentuk_lembaga");
+        return $this->barChart(env('PUI_LEMBAGA',"PUI-lembaga-json"),"bentuk_lembaga",'data');
     }
     public function getLembagaInduk(){
-        return $this->barChart(env('PUI_LEMBAGA',"PUI-lembaga-json"),"lembaga_induk");
+        return $this->barChart(env('PUI_LEMBAGA',"PUI-lembaga-json"),"lembaga_induk",'data');
     } 
     public function getFokusBidang(){
-        return $this->barChart(env('PUI_LEMBAGA',"PUI-lembaga-json"),"fokus_bidang");
+        return $this->barChart(env('PUI_LEMBAGA',"PUI-lembaga-json"),"fokus_bidang",'data');
     }
+    public function getLibtangPUI(){
 
+    }
     public function getTrl(){
+        return json_encode($this->pieChart(env('PUI_PRODUK','PUI-produk-json'),"trl",'data'));
+    }
+    public function getPUI(){
+        $ar = $this->pieChart(env('PUI_LEMBAGA','PUI-produk-json'),"tahun_penetapan",'data');
+        // print_r($ar);echo "<br><br>";
+        $ar['name'] = array_replace($ar['name'],array_fill_keys(array_keys($ar['name'], '0000'),'Belum ditetapkan'));
+        return json_encode($ar);
+    }
+    //PDII-LIPI
+    public function getBidangPenelitian(){
+        return json_encode($this->pieChart(env('PDII_ISJD','PDII-LIPI-ISJD_oai-oai'),"subject",'metadata'));
+    }
+    public function getLitbang(){
+        return json_encode($this->barChart(env('PDII_ELIB','PDII-LIPI-elib-oai'),"publisher",'metadata'));
+    }
+    public function pieChart($collection,$groupByData,$prefix){
         $name=array();
         $total=array();
         $persentase = array();
         $color = array();
-        $records = DB::collection(env('PUI_PRODUK','PUI-produk-json'))->raw(function($collection){
+        $rml = DB::collection('rml')->where('nama_collection','=',$collection)->get();
+        $update_version = $rml[0]['update_version'];
+        $records = DB::collection($collection)->raw(function($collection) use ($groupByData,$prefix,$update_version){
             return $collection->aggregate([
-                        ['$group' => 
+                        [
+                        '$match' => [ 'update_version' => $update_version ]
+                        ],
+                        [
+                        '$group' => 
                             [
-                                '_id'=>'$data.trl',
+                                '_id'=>'$'.$prefix.'.'.$groupByData,
                                 'count'=>
                                     [
                                         '$sum'=>1
                                     ]
-                            ]
+                            ]                        
                         ]
+                        
                     ]);
         });
         foreach ($records as $record) {
@@ -151,17 +176,22 @@ class DashboardController extends Controller
         foreach ($total as $value) {
             array_push($persentase, round(($value/$sum)*100,2));
         }
-        return json_encode(["name"=>$name,"persentage"=>$persentase,"color"=>$color,"sum"=>array_sum($persentase)]);
+        return ["name"=>$name,"persentage"=>$persentase,"color"=>$color,"sum"=>$sum];
     }
 
-    public function barChart($collection, $groupByData){
+    public function barChart($collection, $groupByData, $prefix){
         $label=array();
         $data=array();
-        $records = DB::collection($collection)->raw(function($collection) use ($groupByData){
+        $rml = DB::collection('rml')->where('nama_collection','=',$collection)->get();
+        $update_version = $rml[0]['update_version'];
+        $records = DB::collection($collection)->raw(function($collection) use ($groupByData,$prefix,$update_version){
             return $collection->aggregate([
+                        [
+                        '$match' => [ 'update_version' => $update_version ]
+                        ],
                         ['$group' => 
                             [
-                                '_id'=>'$data.'.$groupByData,
+                                '_id'=>'$'.$prefix.'.'.$groupByData,
                                 'count'=>
                                     [
                                         '$sum'=>1
