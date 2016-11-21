@@ -1,7 +1,4 @@
 @extends('layouts.app')
- @push('styles')
- {!! Html::style('vendors/datatables/datatables.min.css'); !!}
- @endpush
 @section('content')
 <section id="contact" class="contact">
   <div class="contact-area">
@@ -110,11 +107,3 @@
   </div><!-- /.contact-area -->
 </section> 
 @endsection
-@push('scripts')
-{!! Html::script('vendors/datatables/datatables.min.js'); !!}
-<script>
-$(function() {
-
-});
-</script>
-@endpush
