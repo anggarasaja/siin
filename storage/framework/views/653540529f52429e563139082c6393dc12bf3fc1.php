@@ -63,7 +63,7 @@
   						<ul class="contact-list">
   							<li>
   								<a class="site-name" href="/">
-  									<img src="<?php echo e(URL::asset('img/Logo_SIIN_white.png')); ?>" alt="Site Logo" style="max-width: 60px">
+  									<img src="<?php echo e(URL::asset('img/Logo_SIIN_white.png')); ?>" alt="Site Logo" style="max-width: 60px" class="img-logo">
   									<span style="    position: absolute;bottom: -6px;left: 90px;">Sistem Informasi IPTEK Nasional</span>
   								</a>
   							</li>
@@ -73,7 +73,7 @@
               <div class="top-social">
                 <ul>
                   <li>
-                    <a href="http://www.dikti.go.id/"><img src="<?php echo e(URL::asset('img/kemenristekdikti_white.png')); ?>" alt="Site Logo" style="max-width: 50px"></a>
+                    <a href="http://www.dikti.go.id/"><img src="<?php echo e(URL::asset('img/kemenristekdikti_white.png')); ?>" alt="Site Logo" class="img-logo" style="max-width: 50px"></a>
                   </li>
                  
                 </ul>
@@ -96,7 +96,7 @@
   								<i class="fa fa-bars"></i>
   							</button>
                 <div class="menu-logo">
-                  <a href="./"><img src="<?php echo e(URL::asset('img/Logo_SIIN.png')); ?>" alt="menu Logo"></a>
+                  <a href="./"><img src="<?php echo e(URL::asset('img/Logo_SIIN.png')); ?>" alt="menu Logo" class="img-logo"></a>
                 </div><!-- /.menu-logo -->
               </div>
               <nav id="menu" class="menu collapse navbar-collapse">

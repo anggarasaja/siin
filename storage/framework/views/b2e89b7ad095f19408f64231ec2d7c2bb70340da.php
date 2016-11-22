@@ -9,6 +9,9 @@
   .chart-legend li{
       list-style-type: none;
   }
+  .carousel-title {
+    padding: 5% 0;
+  }
 </style>
 <?php $__env->stopPush(); ?>
 <?php $__env->startPush('scripts-head'); ?>
@@ -24,21 +27,21 @@
     <div class="item item-1 active">
       <img src="<?php echo e(URL::asset('img/slider/1.jpg')); ?>">
       <div class="carousel-caption">
-        <div class="slider-icon">
-         <i class="fa fa-desktop"></i>
+        <div class="slider-icon hidden-xs">
+         <img src="<?php echo e(URL::asset('img/Logo_SIIN_white.png')); ?>" style="max-width: 150px">
        </div><!-- /.slider-icon -->
-       <h3 class="carousel-title"><span>SIIN</span> Sistem Informasi IPTEK Nasional</h3>
+       <h3 class="carousel-title"> Sistem Informasi IPTEK Nasional</h3>
      </div><!-- /.carousel-caption -->
    </div>
 
    <div class="item item-2">
     <img src="<?php echo e(URL::asset('img/slider/2.jpg')); ?>">
     <div class="carousel-caption">  
-        <div class="slider-icon">
-         <i class="fa fa-desktop"></i>
-       </div><!-- /.slider-icon --> 
-      <h3 class="carousel-title"><span>SIIN</span> Sistem Informasi IPTEK Nasional</h3>
-    </div><!-- /.carousel-caption -->
+        <div class="slider-icon hidden-xs">
+         <a href="http://www.dikti.go.id/"><img src="<?php echo e(URL::asset('img/kemenristekdikti_white.png')); ?>" alt="Site Logo" style="max-width: 100px"></a>
+       </div>
+      <h3 class="carousel-title"> Sistem Informasi IPTEK Nasional</h3>
+    </div>
   </div>
 </div>
 
@@ -102,7 +105,7 @@
                 <div class="item">
                   <article class="post type-post">
                     <div class="post-content">
-                      <h2 class="entry-title">Produk berdasarkan TRL</h2> 
+                      <h2 class="entry-title">Produk berdasarkan Technology Readiness Level</h2> 
                         <canvas id="pieChart"></canvas>
                     </div><!-- /.post-content -->
                   </article>
@@ -172,6 +175,11 @@
 <?php $__env->startPush('scripts'); ?>
 <script type="text/javascript">
   var option = {
+            legend:{
+              position:'bottom',
+              fullWidth:false,
+
+            },
             responsive: true,
             tooltips: {
               callbacks: {
@@ -207,7 +215,7 @@
         var pieChart = new Chart(ctx, {
           data: data,
           type: 'pie',
-          options: option
+          options: option,
         });
       },
       error: function(data) {
