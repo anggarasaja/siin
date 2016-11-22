@@ -91,27 +91,10 @@ class ReportingController extends Controller
     }
 
     public function getDoc(){
-        // $handle_lembaga = fopen("http://pui.ristekdikti.go.id/index.php/webservice/getData/getLembaga", "rb");
-        // $handle_produk = fopen("http://pui.ristekdikti.go.id/index.php/webservice/getData/getProduk", "rb");
-
-        // if (FALSE === $handle_lembaga) {
-        //     exit("Failed to open stream to URL");
-        // }
 
         $contents_lembaga = '';
         $contents_produk = '';
         $nama_lembaga= '';
-        // while (!feof($handle_lembaga)) {
-        //     $contents_lembaga .= fread($handle_lembaga, 8192);
-        // }
-        // while (!feof($handle_produk)) {
-        //     $contents_produk .= fread($handle_produk, 8192);
-        // }
-        // fclose($handle_lembaga);
-        // fclose($handle_produk);
-
-        // $data_pui=json_decode($contents_lembaga);
-        // $data_produk=json_decode($contents_produk);
         $data_produk = $this->getData('PUI-produk-json');
         $data_pui = $this->getData('PUI-lembaga-json');
 
@@ -158,7 +141,6 @@ class ReportingController extends Controller
 
         foreach ($data_produk as $key=> $value) {
             $name_lembaga = (string) $value['data']['nama_lembaga'];
-            // if(strcasecmp($name_lembaga, $nama_lembaga)==0){
                 $rekap_produk[] = array(
                     'nama_lembaga' => $value['data']['nama_lembaga'],
                     'nama_produk' => $value['data']['nama_produk'],
