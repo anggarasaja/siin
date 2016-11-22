@@ -128,7 +128,7 @@ class ReportingController extends Controller
         $rekap = array();
         $rekap_produk = array();
 
-        $template = app_path().'/Libraries/laporan-pui.docx'; 
+        $template = app_path().'/Libraries/laporan-pui-new.docx'; 
         $TBS->LoadTemplate($template, OPENTBS_ALREADY_UTF8);
 
         foreach ($data_pui as $key=> $value) {
@@ -156,19 +156,19 @@ class ReportingController extends Controller
         }
         $TBS->MergeBlock('a', $rekap); 
 
-        foreach ($data_produk as $key=> $value) {
-            $name_lembaga = (string) $value['data']['nama_lembaga'];
-            // if(strcasecmp($name_lembaga, $nama_lembaga)==0){
-                $rekap_produk[] = array(
-                    'nama_lembaga' => $value['data']['nama_lembaga'],
-                    'nama_produk' => $value['data']['nama_produk'],
-                    'deskripsi' => $value['data']['deskripsi'],
-                    'trl' => $value['data']['trl'],
-                    'potensi_pengguna' => $value['data']['potensi_pengguna'],
-                    'potensi_mitra' => $value['data']['potensi_mitra']
-                    );
-            // }
-        }
+        // foreach ($data_produk as $key=> $value) {
+        //     $name_lembaga = (string) $value['data']['nama_lembaga'];
+        //     // if(strcasecmp($name_lembaga, $nama_lembaga)==0){
+        //         $rekap_produk[] = array(
+        //             'nama_lembaga' => $value['data']['nama_lembaga'],
+        //             'nama_produk' => $value['data']['nama_produk'],
+        //             'deskripsi' => $value['data']['deskripsi'],
+        //             'trl' => $value['data']['trl'],
+        //             'potensi_pengguna' => $value['data']['potensi_pengguna'],
+        //             'potensi_mitra' => $value['data']['potensi_mitra']
+        //             );
+        //     // }
+        // }
 
         $TBS->MergeBlock('b', $rekap_produk); 
 
