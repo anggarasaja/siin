@@ -31,11 +31,14 @@ Route::get('/oai/tes', 'OaiController@tes');
 Route::get('/oai/list', 'OaiController@getAvailableMetadataFormats');
 Route::get('/oai/records', 'OaiController@getRecords');
 
+Route::get('/opentbs/get-doc/', 'ReportingController@getDoc');
+
 Route::get('/rml/get-active/', 'RMLController@getActive');
 Route::get('/rml/get-fields/{id}', 'RMLController@getIdFields');
 Route::get('/rml/get-service-name/', 'RMLController@getServiceName');
 Route::get('/rml/get-active-count/', 'RMLController@getActiveCount');
 Route::post('/rml/submit', 'RMLController@store');
+
 
 
 Route::get('/updater/update/', 'WebServiceUpdater@updateLocal');
