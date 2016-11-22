@@ -112,7 +112,7 @@
               <div class="item">
                 <article class="post type-post">
                   <div class="post-content">
-                    <h2 class="entry-title">Unit LitBang berdasarkan Fokus Bidang</h2> 
+                    <h2 class="entry-title">Unit LitBang berdasarkan Tahun Penetapan PUI</h2> 
                       <canvas id="piePUI"></canvas>
                   </div>
                 </article>
@@ -171,6 +171,24 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('scripts'); ?>
 <script type="text/javascript">
+  var option = {
+            responsive: true,
+            tooltips: {
+              callbacks: {
+                label: function(tooltipItem, data) {
+                  var allData = data.datasets[tooltipItem.datasetIndex].data;
+                  var tooltipLabel = data.labels[tooltipItem.index];
+                  var tooltipData = allData[tooltipItem.index];
+                  var total = 0;
+                  for (var i in allData) {
+                    total += allData[i];
+                  }
+                  var tooltipPercentage = Math.round((tooltipData / total) * 100);
+                  return tooltipLabel + ': ' + tooltipPercentage + '%';
+                }
+              }
+            }
+          }
  $(document).ready(function() {
     $.ajax({
       url: "/chart/getBidPel",
@@ -189,25 +207,7 @@
         var pieChart = new Chart(ctx, {
           data: data,
           type: 'pie',
-          otpions: {
-            legend: false,
-            responsive: true,
-            // tooltips: {
-            //   callbacks: {
-            //     label: function(tooltipItem, data) {
-            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
-            //       var tooltipLabel = data.labels[tooltipItem.index];
-            //       var tooltipData = allData[tooltipItem.index];
-            //       var total = 0;
-            //       for (var i in allData) {
-            //         total += allData[i];
-            //       }
-            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
-            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
-            //     }
-            //   }
-            // }
-          }
+          options: option
         });
       },
       error: function(data) {
@@ -225,7 +225,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: 'Bentuk Lembaga',
+              label: 'Total Unit Litbang',
               backgroundColor: "#107FC9",
               data: result.data
             }]
@@ -263,7 +263,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: 'Fokus Bidang',
+              label: 'Total Unit Litbang',
               backgroundColor: "#107FC9",
               data: result.data
             }]
@@ -302,7 +302,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: 'Lembaga Induk',
+              label: 'Total Unit Litbang',
               backgroundColor: "#107FC9",
               data: result.data
             }]
@@ -342,7 +342,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: 'Kategori Lembaga',
+              label: 'Total Unit Litbang',
               backgroundColor: "#107FC9",
               data: result.data
             }]
@@ -388,25 +388,7 @@
         var pieChart = new Chart(ctx, {
           data: data,
           type: 'pie',
-          otpions: {
-            legend: false,
-            responsive: true,
-            // tooltips: {
-            //   callbacks: {
-            //     label: function(tooltipItem, data) {
-            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
-            //       var tooltipLabel = data.labels[tooltipItem.index];
-            //       var tooltipData = allData[tooltipItem.index];
-            //       var total = 0;
-            //       for (var i in allData) {
-            //         total += allData[i];
-            //       }
-            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
-            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
-            //     }
-            //   }
-            // }
-          }
+          options: option,
         });
       },
       error: function(data) {
@@ -431,68 +413,7 @@
         var pieChart = new Chart(ctx, {
           data: data,
           type: 'pie',
-          otpions: {
-            legend: false,
-            responsive: true,
-            // tooltips: {
-            //   callbacks: {
-            //     label: function(tooltipItem, data) {
-            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
-            //       var tooltipLabel = data.labels[tooltipItem.index];
-            //       var tooltipData = allData[tooltipItem.index];
-            //       var total = 0;
-            //       for (var i in allData) {
-            //         total += allData[i];
-            //       }
-            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
-            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
-            //     }
-            //   }
-            // }
-          }
-        });
-      },
-      error: function(data) {
-        console.log(data);
-      }
-    });
-
-    $.ajax({
-      url: "/chart/getBidPel",
-      method: "GET",
-      success: function(data) {
-        result = jQuery.parseJSON(data);
-        var ctx = document.getElementById("pieBidang");
-        var data = {
-          datasets: [{
-            data: result.persentage,
-            backgroundColor: result.color,
-            label: 'PUI' // for legend
-          }],
-          labels: result.name
-        };
-        var pieChart = new Chart(ctx, {
-          data: data,
-          type: 'pie',
-          otpions: {
-            legend: false,
-            responsive: true,
-            // tooltips: {
-            //   callbacks: {
-            //     label: function(tooltipItem, data) {
-            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
-            //       var tooltipLabel = data.labels[tooltipItem.index];
-            //       var tooltipData = allData[tooltipItem.index];
-            //       var total = 0;
-            //       for (var i in allData) {
-            //         total += allData[i];
-            //       }
-            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
-            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
-            //     }
-            //   }
-            // }
-          }
+          options: option
         });
       },
       error: function(data) {

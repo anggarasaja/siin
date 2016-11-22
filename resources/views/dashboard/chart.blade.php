@@ -20,6 +20,24 @@
 @push('scripts')
     
     <script type="text/javascript">
+      var option = {
+            responsive: true,
+            tooltips: {
+              callbacks: {
+                label: function(tooltipItem, data) {
+                  var allData = data.datasets[tooltipItem.datasetIndex].data;
+                  var tooltipLabel = data.labels[tooltipItem.index];
+                  var tooltipData = allData[tooltipItem.index];
+                  var total = 0;
+                  for (var i in allData) {
+                    total += allData[i];
+                  }
+                  var tooltipPercentage = Math.round((tooltipData / total) * 100);
+                  return tooltipLabel + ': ' + tooltipPercentage + '%';
+                }
+              }
+            }
+          }
   $(document).ready(function() {
     $('#fullcalendar').fullCalendar({
     });
@@ -34,7 +52,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: 'Bentuk Lembaga',
+              label: 'Total Unit Litbang',
               backgroundColor: "#26B99A",
               data: result.data
             }]
@@ -73,7 +91,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: 'Fokus Bidang',
+              label: 'Total Unit Litbang',
               backgroundColor: "#26B99A",
               data: result.data
             }]
@@ -112,7 +130,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: 'Lembaga Induk',
+              label: 'Total Unit Litbang',
               backgroundColor: "#26B99A",
               data: result.data
             }]
@@ -152,7 +170,7 @@
           data: {
             labels: result.label,
             datasets: [{
-              label: 'Kategori Lembaga',
+              label: 'Total Unit Litbang',
               backgroundColor: "#26B99A",
               data: result.data
             }]
@@ -198,25 +216,7 @@
         var pieChart = new Chart(ctx, {
           data: data,
           type: 'pie',
-          otpions: {
-            legend: false,
-            responsive: true,
-            // tooltips: {
-            //   callbacks: {
-            //     label: function(tooltipItem, data) {
-            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
-            //       var tooltipLabel = data.labels[tooltipItem.index];
-            //       var tooltipData = allData[tooltipItem.index];
-            //       var total = 0;
-            //       for (var i in allData) {
-            //         total += allData[i];
-            //       }
-            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
-            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
-            //     }
-            //   }
-            // }
-          }
+          options: option
         });
       },
       error: function(data) {
@@ -240,25 +240,7 @@
         var pieChart = new Chart(ctx, {
           data: data,
           type: 'pie',
-          otpions: {
-            legend: false,
-            responsive: true,
-            // tooltips: {
-            //   callbacks: {
-            //     label: function(tooltipItem, data) {
-            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
-            //       var tooltipLabel = data.labels[tooltipItem.index];
-            //       var tooltipData = allData[tooltipItem.index];
-            //       var total = 0;
-            //       for (var i in allData) {
-            //         total += allData[i];
-            //       }
-            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
-            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
-            //     }
-            //   }
-            // }
-          }
+          options: option
         });
       },
       error: function(data) {
@@ -282,25 +264,7 @@
         var pieChart = new Chart(ctx, {
           data: data,
           type: 'pie',
-          otpions: {
-            legend: false,
-            responsive: true,
-            // tooltips: {
-            //   callbacks: {
-            //     label: function(tooltipItem, data) {
-            //       var allData = data.datasets[tooltipItem.datasetIndex].data;
-            //       var tooltipLabel = data.labels[tooltipItem.index];
-            //       var tooltipData = allData[tooltipItem.index];
-            //       var total = 0;
-            //       for (var i in allData) {
-            //         total += allData[i];
-            //       }
-            //       var tooltipPercentage = Math.round((tooltipData / total) * 100);
-            //       return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
-            //     }
-            //   }
-            // }
-          }
+          options: option
         });
       },
       error: function(data) {
@@ -309,8 +273,10 @@
     });
   });
   //     // Bar chart
-  // Chart.defaults.global.legend = {
-  //   enabled: false
+  // Chart.defaults.global.tooltips = {
+  // //   enabled: false
+  //     enabled: true,
+  //       bodyFontSize: 12,
   // };
   
   

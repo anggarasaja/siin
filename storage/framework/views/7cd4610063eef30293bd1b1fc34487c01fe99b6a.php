@@ -1,7 +1,3 @@
- <?php $__env->startPush('styles'); ?>
- <?php echo Html::style('vendors/datatables/datatables.min.css');; ?>
-
- <?php $__env->stopPush(); ?>
 <?php $__env->startSection('content'); ?>
 <section id="contact" class="contact">
   <div class="contact-area">
@@ -114,13 +110,4 @@
   </div><!-- /.contact-area -->
 </section> 
 <?php $__env->stopSection(); ?>
-<?php $__env->startPush('scripts'); ?>
-<?php echo Html::script('vendors/datatables/datatables.min.js');; ?>
-
-<script>
-$(function() {
-
-});
-</script>
-<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
