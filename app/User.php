@@ -17,7 +17,7 @@ class User extends Eloquent implements \Illuminate\Contracts\Auth\Authenticatabl
      * @var array
      */
     protected $fillable = [
-        'username', 'name', 'email', 'password', 'jenis', 'status',
+        'username', 'nama_lembaga', 'email', 'password', 'jenis', 'status',
     ];
 
     /**
