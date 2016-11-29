@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\SliderController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -86,5 +87,9 @@ class FrontController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function tes(){
+        print_r(Auth::user()->nama_lembaga);
     }
 }

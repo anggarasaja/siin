@@ -1,6 +1,4 @@
-@extends('layouts.dashboard')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
         <!-- page content -->
           <div>
             <div class="row">
@@ -21,19 +19,19 @@
                         <div class="row">
                           <div class="col-md-7 col-sm-12 col-xs-12">
                             <h3 ng-bind="fullname || 'Nama Pengguna'" style="text-transform: capitalize;"></h3>
-                            <div style="margin-top:-8px;margin-bottom:4px"><span style="">ID :</span> <span ng-bind="username || 'ID Pengguna'">{{ $user->_id}}</span></div>
+                            <div style="margin-top:-8px;margin-bottom:4px"><span style="">ID :</span> <span ng-bind="username || 'ID Pengguna'"><?php echo e($user->_id); ?></span></div>
                             <table>
                               <tr>
                                 <td><i class="fa fa-briefcase"></i>&nbsp;Lembaga </td>
-                                <td> :&nbsp; {{ $user->nama_lembaga }}</td>
+                                <td> :&nbsp; <?php echo e($user->nama_lembaga); ?></td>
                               </tr>
                               <tr>
                                 <td><i class="fa fa-user"></i>&nbsp;Username </td>
-                                <td> :&nbsp; {{ $user->username}}</td>
+                                <td> :&nbsp; <?php echo e($user->username); ?></td>
                               </tr>
                               <tr>
                                 <td><i class="fa fa-envelope"></i>&nbsp;Email </td>
-                                <td> :&nbsp; {{ $user->email}}</td>
+                                <td> :&nbsp; <?php echo e($user->email); ?></td>
                               </tr>
                             </table>
                           </div>
@@ -65,14 +63,17 @@
             </div>
           </div>
         </div>
-        @endsection
+        <?php $__env->stopSection(); ?>
         
-        @push('scripts')
-        {!! Html::style('vendors/jquery-nice-select/css/nice-select.css'); !!}
-        {!! Html::script('vendors/jquery-nice-select/js/jquery.nice-select.js'); !!}
+        <?php $__env->startPush('scripts'); ?>
+        <?php echo Html::style('vendors/jquery-nice-select/css/nice-select.css');; ?>
+
+        <?php echo Html::script('vendors/jquery-nice-select/js/jquery.nice-select.js');; ?>
+
         <script type="text/javascript">
           $(document).ready(function() {
             $('#nice-select').niceSelect();
           });
         </script>
-        @endpush
+        <?php $__env->stopPush(); ?>
+<?php echo $__env->make('layouts.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

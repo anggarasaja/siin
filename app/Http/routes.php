@@ -11,10 +11,13 @@
 |
 */
 Route::get('/', 'FrontController@index');
+Route::get('/tes', 'FrontController@tes');
+
 // Route::get('tes', function () {
 //     // return phpinfo() ;
-//     $a = Hash::make('bismillah');
-//     echo $a;
+//     // $a = Hash::make('bismillah');
+//     // echo $a;
+//     echo Request::session()->get('nama_lem');
 // });
 
 Route::get('/pui-lembaga', 'SaveToCollection@index');
@@ -79,7 +82,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
     Route::get('/datatables/getRml', 'RMLController@getAllDt');
 
-
+    Route::get('user/{id}','userController@show');
 
    
 

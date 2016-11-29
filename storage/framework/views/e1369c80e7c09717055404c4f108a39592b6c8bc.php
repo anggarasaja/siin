@@ -152,11 +152,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="<?php echo e(url('user/'.Auth::user()->id)); ?>"> Profil</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span>Pengaturan</span>
-                      </a>
-                    </li>
+                   
                     <li><a href="javascript:;">Bantuan</a></li>
                     <li><a href="<?php echo e(url('/logout')); ?>"><i class="fa fa-sign-out pull-right"></i> Logout</a></li>
                   </ul>

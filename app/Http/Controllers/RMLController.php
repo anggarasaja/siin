@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Datatables;
 use App\Http\Requests;
 use App\RMLModel;
@@ -185,40 +186,7 @@ class RMLController extends Controller
     }
 
     public function getServiceName(){
-        // $collection = "rml";
-        // $groupByData = "nama_service";
         $array = array();
-        // $records = DB::collection($collection)->raw(function($collection) use ($groupByData){
-        //     return $collection->aggregate([
-        //                 [
-        //                 '$group' => 
-        //                     [   
-        //                         '_id'=>'$'.$groupByData,
-
-        //                         'id'=>
-        //                             [
-        //                                 '$push'=>'$_id'
-        //                             ],
-        //                         'penyedia'=>
-        //                             [
-        //                                 '$push'=>'$penyedia'
-        //                             ],
-        //                     ],
-        //                 ],
-        //                 // [
-        //                 // '$match' => 
-        //                 //     [
-        //                 //         'fields' =>
-        //                 //         [
-        //                 //             'exist' => true
-        //                 //         ]
-        //                 //     ]
-        //                 // ]
-        //             ]);
-        // });
-        // foreach ($records as $record) {
-        //     array_push($array, ['nama_service'=>$record->_id,'id'=>(string)$record->id[0],'penyedia'=>$record->penyedia[0]]);
-        // }
         $rs = DB::collection('rml')->project(['nama_service' => true, '_id'=> false])->get();
         foreach ($rs as $value) {
             array_push($array, $value['nama_service']);
@@ -227,17 +195,17 @@ class RMLController extends Controller
     }
 
     public function getAllDt(){
-        $records= RMLModel::get();
+
+        if(Auth::user()->jenis == 0){
+            $records= RMLModel::get();
+        } else {
+            $records= RMLModel::where("penyedia","=",Auth::user()->nama_lembaga)->get();
+        }
         return Datatables::of($records)
         ->addColumn('action', function ($row) {
             $button = "<div class='btn-group-vertical'>
                                 <a type='button' class='btn btn-primary btn-xs' href='/rml/edit/".$row->_id."'>Edit</a>
                                 <button type='button' class='btn btn-warning btn-xs btn-update' value='".$row->_id."' id='update-".$row->_id."'>Perbaharui</button>";
-            // if($row->aktif==null){
-            //     $button = $button."<button type='button' class='btn btn-success btn-xs'>aktifkan</button>";
-            // } elseif ($row->aktif=='on') {
-            //      $button = $button."<button type='button' class='btn btn-danger btn-xs'>non-aktifkan</button>";
-            // }
             $button = $button.'<div class="progress" style="display:none"  id="progress-'.$row->_id.'">
                                 <div class="progress-bar progress-bar-striped progress-bar-info active" role="progressbar" style="width:100%">memproses
                                 </div>
