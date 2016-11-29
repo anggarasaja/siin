@@ -22,14 +22,16 @@ class SearchController extends Controller
         //
         $data_prefix = "";
         $rml = new RMLController;
-        $nama_service = $rml->getServiceName();
+        $nama_service = $rml->getServiceNameId();
         
 
         $key = Input::get('key',false);
         $id_service = Input::get('id_service',false);
 
         if($key == false || $id_service == false){
-            return view('search',['services'=>$nama_service]);
+            // print_r($nama_service);
+            // exit;
+            return view('search',["services"=>$nama_service]);
         }
 
         $rml = new RMLController;

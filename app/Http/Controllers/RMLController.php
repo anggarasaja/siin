@@ -193,6 +193,11 @@ class RMLController extends Controller
         }
         return json_encode($array);
     }
+    public function getServiceNameId(){
+        $array = array();
+        $rs = DB::collection('rml')->project(['nama_service' => true,'penyedia' => true])->orderBy('penyedia', 'desc')->get();
+        return $rs;
+    }
 
     public function getAllDt(){
 
