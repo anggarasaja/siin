@@ -50,6 +50,16 @@ class RMLController extends Controller
         $jenis = $request->jenis;
         $link = $request->link;
         $aktif = $request->aktif;
+        $arrServ = json_decode($this->getServiceName());
+
+        if(in_array($namaservice, $arrServ)){
+            return redirect()->route('inputRML',["fail"]);
+        }
+        $file_headers = @get_headers($link);
+        if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+            return redirect()->route('inputRML',["fail"]);
+        }
+
         if($request->posisi_record == ""){
             $posisi_record = 0;
         } else {
@@ -175,41 +185,45 @@ class RMLController extends Controller
     }
 
     public function getServiceName(){
-        $collection = "rml";
-        $groupByData = "nama_service";
+        // $collection = "rml";
+        // $groupByData = "nama_service";
         $array = array();
-        $records = DB::collection($collection)->raw(function($collection) use ($groupByData){
-            return $collection->aggregate([
-                        [
-                        '$group' => 
-                            [   
-                                '_id'=>'$'.$groupByData,
+        // $records = DB::collection($collection)->raw(function($collection) use ($groupByData){
+        //     return $collection->aggregate([
+        //                 [
+        //                 '$group' => 
+        //                     [   
+        //                         '_id'=>'$'.$groupByData,
 
-                                'id'=>
-                                    [
-                                        '$push'=>'$_id'
-                                    ],
-                                'penyedia'=>
-                                    [
-                                        '$push'=>'$penyedia'
-                                    ],
-                            ],
-                        ],
-                        // [
-                        // '$match' => 
-                        //     [
-                        //         'fields' =>
-                        //         [
-                        //             'exist' => true
-                        //         ]
-                        //     ]
-                        // ]
-                    ]);
-        });
-        foreach ($records as $record) {
-            array_push($array, ['nama_service'=>$record->_id,'id'=>(string)$record->id[0],'penyedia'=>$record->penyedia[0]]);
+        //                         'id'=>
+        //                             [
+        //                                 '$push'=>'$_id'
+        //                             ],
+        //                         'penyedia'=>
+        //                             [
+        //                                 '$push'=>'$penyedia'
+        //                             ],
+        //                     ],
+        //                 ],
+        //                 // [
+        //                 // '$match' => 
+        //                 //     [
+        //                 //         'fields' =>
+        //                 //         [
+        //                 //             'exist' => true
+        //                 //         ]
+        //                 //     ]
+        //                 // ]
+        //             ]);
+        // });
+        // foreach ($records as $record) {
+        //     array_push($array, ['nama_service'=>$record->_id,'id'=>(string)$record->id[0],'penyedia'=>$record->penyedia[0]]);
+        // }
+        $rs = DB::collection('rml')->project(['nama_service' => true, '_id'=> false])->get();
+        foreach ($rs as $value) {
+            array_push($array, $value['nama_service']);
         }
-        return $array;
+        return json_encode($array);
     }
 
     public function getAllDt(){

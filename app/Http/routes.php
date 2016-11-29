@@ -10,14 +10,12 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('tes', function () {
-    // return phpinfo() ;
-    $a = Hash::make('bismillah');
-    echo $a;
-});
+Route::get('/', 'FrontController@index');
+// Route::get('tes', function () {
+//     // return phpinfo() ;
+//     $a = Hash::make('bismillah');
+//     echo $a;
+// });
 
 Route::get('/pui-lembaga', 'SaveToCollection@index');
 Route::get('/pui-lembaga/store', 'SaveToCollection@store');
@@ -67,6 +65,9 @@ Route::get('/chart/getLitbang', 'DashboardController@getLitbang');
 Route::get('/search', 'SearchController@index');
 Route::get('/search/submit', 'SearchController@doSearch');
 
+//slider
+Route::get('slider-active','SliderController@getSliderActive');
+
     
 Route::group(['middleware' => ['web', 'auth']], function () {
 	Route::get('/dashboard','DashboardController@frontpage');
@@ -86,7 +87,20 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
      Route::resource('user','userController');
+     
     Route::get('getUser','userController@getUser');
     Route::get('userProfile','userController@userProfile');
+
+    //slider
+    Route::get('slider-template','SliderController@downloadTemplate');
+    Route::get('slider','SliderController@index');
+     Route::get('datatables/slider','SliderController@getSliderDt');
+     Route::get('slider-html','SliderController@sliderHTML');
+     Route::post('slider-upload','SliderController@post_upload');
+     Route::post('slider-drop','SliderController@dropSlider');
+     Route::post('slider-activate','SliderController@setActive');
+     Route::post('slider-deactivate','SliderController@setDeactive');
+     Route::resource('slider-input/{status?}','SliderController@create');
+
 
 });

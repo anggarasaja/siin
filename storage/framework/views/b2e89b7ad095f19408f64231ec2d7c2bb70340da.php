@@ -22,36 +22,8 @@
 
   <section id="main-slider" class="main-slider carousel slide" data-ride="carousel">
 
-   <!-- Wrapper for slides -->
-   <div class="carousel-inner" role="listbox">
-    <div class="item item-1 active">
-      <img src="<?php echo e(URL::asset('img/slider/1.jpg')); ?>">
-      <div class="carousel-caption">
-        <div class="slider-icon hidden-xs">
-         <img src="<?php echo e(URL::asset('img/Logo_SIIN_white.png')); ?>" style="max-width: 150px">
-       </div><!-- /.slider-icon -->
-       <h3 class="carousel-title"> Sistem Informasi IPTEK Nasional</h3>
-     </div><!-- /.carousel-caption -->
-   </div>
+   <?php echo $slider; ?>
 
-   <div class="item item-2">
-    <img src="<?php echo e(URL::asset('img/slider/2.jpg')); ?>">
-    <div class="carousel-caption">  
-        <div class="slider-icon hidden-xs">
-         <a href="http://www.dikti.go.id/"><img src="<?php echo e(URL::asset('img/kemenristekdikti_white.png')); ?>" alt="Site Logo" style="max-width: 100px"></a>
-       </div>
-      <h3 class="carousel-title"> Sistem Informasi IPTEK Nasional</h3>
-    </div>
-  </div>
-</div>
-
-<!-- Controls -->
-<a class="left carousel-control" href="#main-slider" role="button" data-slide="prev">
-  <i class="fa fa-angle-left"></i>
-</a>
-<a class="right carousel-control" href="#main-slider" role="button" data-slide="next">
-  <i class="fa fa-angle-right"></i>
-</a>
 
 </section><!-- /#main-slider -->
 

@@ -44,7 +44,7 @@
 
     <?php echo Html::style('vendors/pnotify/dist/pnotify.nonblock.css');; ?>
 
-    <?php echo Html::style('build/css/custom.min.css');; ?>
+    <?php echo Html::style('build/css/custom.css');; ?>
 
     <?php echo Html::style('css/sweetalert.css');; ?>
 
@@ -126,6 +126,7 @@
                   <li><a href="/rml"><i class="fa fa-cloud"></i> API Services</a></li>
                   <?php if(Auth::user()->jenis == 0): ?>
                   <li><a href="<?php echo e(URL::to('user')); ?>"><i class="fa fa-users"></i> Manajemen Pengguna</a></li>
+                  <li><a href="/slider"><i class="fa fa-picture-o"></i> Manajemen Slider</a></li>
                   <!-- <li><a href="<?php echo e(URL::to('user')); ?>"><i class="fa fa-users"></i> Manajemen Content-Type</a></li> -->
                   <?php endif; ?>
                 </ul>
